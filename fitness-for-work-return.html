@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Fitness for Work – Return After Illness/Injury</title>
+<style>
+/* ---- shared clean UI ---- */
+*{box-sizing:border-box}
+body{margin:0;padding:40px 8px;font-family:"Segoe UI",Roboto,Arial,sans-serif;background:#f2f4f7;color:#222}
+h1{margin:0 0 20px;font-size:1.9rem;font-weight:600;text-align:center;color:#10375c}
+h2{margin:0 0 14px;padding-bottom:6px;font-size:1.15rem;color:#10375c;border-bottom:2px solid #d5e2f1}
+form{max-width:920px;margin:auto}
+fieldset{margin:24px 0;padding:24px;border:0;border-radius:8px;background:#fff;box-shadow:0 2px 8px rgba(16,55,92,.08)}
+label{display:block;margin-top:9px;font-weight:600}
+input[type=text],input[type=date],input[type=number],textarea,select{
+  width:100%;max-width:430px;padding:8px 10px;margin-top:4px;border:1px solid #cfd8e3;border-radius:6px;font:inherit
+}
+textarea{resize:vertical}
+input[type=checkbox],input[type=radio]{transform:scale(1.05);margin-right:6px}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:.94rem}
+th,td{border:1px solid #d9e0ea;padding:8px 10px;text-align:left}
+th{background:#eef4fb;font-weight:600}
+tr:nth-child(even) td{background:#fafbfc}
+.small{font-size:.85rem;color:#555}
+@media(max-width:600px){
+  body{padding:24px 4px}
+  input,textarea,select{max-width:100%}
+}
+</style>
+</head>
+<body>
+
+<h1>Fitness for Work – Return After Illness/Injury</h1>
+
+<form>
+
+<!-- 1 -->
+<fieldset>
+  <h2>1 │ Personal &amp; Employment Details</h2>
+  <label>Full Name <input type="text" required></label>
+  <label>Date of Birth <input type="date"></label>
+  <label>Contact Number <input type="text"></label>
+  <label>Email Address <input type="text"></label>
+  <label>Job Title <input type="text"></label>
+  <label>Department / Location <input type="text"></label>
+  <label>Employer Name <input type="text"></label>
+  <label>Line Manager / HR Contact <input type="text"></label>
+  <label>Date you last worked <input type="date"></label>
+  <label>Expected return date (if known) <input type="date"></label>
+  <label>Usual work pattern
+    <select>
+      <option>Full-Time</option><option>Part-Time</option><option>Shift</option><option>Remote</option>
+    </select>
+  </label>
+</fieldset>
+
+<!-- 2 -->
+<fieldset>
+  <h2>2 │ Medical Condition</h2>
+  <label>Reason for absence<br><textarea rows="2"></textarea></label>
+  <label>Treatment received (GP, hospital, physio, surgery…)<br><textarea rows="2"></textarea></label>
+
+  <label>Still undergoing treatment / awaiting follow-ups?
+    <input type="radio" name="treat" value="yes"> Yes
+    <input type="radio" name="treat" value="no"> No
+  </label>
+  <label>If yes, please explain<br><textarea rows="2"></textarea></label>
+
+  <label>Doctor / specialist advised on fitness to return?
+    <input type="radio" name="adv" value="yes"> Yes
+    <input type="radio" name="adv" value="no"> No
+  </label>
+</fieldset>
+
+<!-- 3 -->
+<fieldset>
+  <h2>3 │ Functional Impact</h2>
+  <p class="small">Indicate whether your illness/injury affects the following.</p>
+  <table>
+    <tr><th>Activity / Ability</th><th>Yes</th><th>No</th><th>If Yes, explain</th></tr>
+    <tr><td>Standing / walking for long periods</td><td><input type="radio" name="stand" value="yes"></td><td><input type="radio" name="stand" value="no"></td><td><input type="text"></td></tr>
+    <tr><td>Lifting / carrying / pushing</td><td><input type="radio" name="lift" value="yes"></td><td><input type="radio" name="lift" value="no"></td><td><input type="text"></td></tr>
+    <tr><td>Sitting at a desk / computer</td><td><input type="radio" name="sit" value="yes"></td><td><input type="radio" name="sit" value="no"></td><td><input type="text"></td></tr>
+    <tr><td>Concentration / memory</td><td><input type="radio" name="conc" value="yes"></td><td><input type="radio" name="conc" value="no"></td><td><input type="text"></td></tr>
+    <tr><td>Communication (speaking, hearing)</td><td><input type="radio" name="comm" value="yes"></td><td><input type="radio" name="comm" value="no"></td><td><input type="text"></td></tr>
+    <tr><td>Managing stress / pressure</td><td><input type="radio" name="stress" value="yes"></td><td><input type="radio" name="stress" value="no"></td><td><input type="text"></td></tr>
+    <tr><td>Driving / operating machinery</td><td><input type="radio" name="drive" value="yes"></td><td><input type="radio" name="drive" value="no"></td><td><input type="text"></td></tr>
+  </table>
+</fieldset>
+
+<!-- 4 -->
+<fieldset>
+  <h2>4 │ Workplace Needs &amp; Support</h2>
+  <label>Feel able to return to full duties without restriction?
+    <input type="radio" name="full" value="yes"> Yes
+    <input type="radio" name="full" value="no"> No
+  </label>
+
+  <label>If no, what support or adjustments would help? (tick where relevant)</label>
+  <label><input type="checkbox"> Reduced hours / phased return</label>
+  <label><input type="checkbox"> Light duties / modified tasks</label>
+  <label><input type="checkbox"> Adjustments to workstation</label>
+  <label><input type="checkbox"> Temporary redeployment</label>
+  <label><input type="checkbox"> Other – specify <input type="text" style="max-width:250px"></label>
+
+  <label>Have you discussed return-to-work arrangements with your manager?
+    <input type="radio" name="discuss" value="yes"> Yes
+    <input type="radio" name="discuss" value="no"> No
+  </label>
+</fieldset>
+
+<!-- 5 -->
+<fieldset>
+  <h2>5 │ Additional Health Considerations</h2>
+  <label>Currently taking any medication that may affect your work?
+    <input type="radio" name="meds" value="yes"> Yes
+    <input type="radio" name="meds" value="no"> No
+  </label>
+  <label>If yes, list medication &amp; side effects<br><textarea rows="2"></textarea></label>
+
+  <label>Previous similar absence for this condition?
+    <input type="radio" name="prev" value="yes"> Yes
+    <input type="radio" name="prev" value="no"> No
+  </label>
+
+  <label>Do you feel confident and ready to return?
+    <input type="radio" name="ready" value="yes"> Yes
+    <input type="radio" name="ready" value="no"> No
+  </label>
+  <label>If no, explain briefly<br><textarea rows="2"></textarea></label>
+</fieldset>
+
+<!-- 6 -->
+<fieldset>
+  <h2>6 │ Declaration</h2>
+  <p>I declare that the above information is true and complete to the best of my knowledge. I understand this information will be used by Occupational Health to assess my fitness to return to work and determine if any support is needed.</p>
+  <label>Signature ____________________________</label><br>
+  <label>Date ____ / ____ / 20__</label>
+</fieldset>
+
+</form>
+</body>
+</html>
