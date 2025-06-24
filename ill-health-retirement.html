@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Ill-Health Retirement Assessment – Employee Questionnaire</title>
+<style>
+/* ---- shared clean UI ---- */
+*{box-sizing:border-box}
+body{margin:0;padding:40px 8px;font-family:"Segoe UI",Roboto,Arial,sans-serif;background:#f2f4f7;color:#222}
+h1{margin:0 0 20px;font-size:1.9rem;font-weight:600;text-align:center;color:#10375c}
+h2{margin:0 0 14px;padding-bottom:6px;font-size:1.15rem;color:#10375c;border-bottom:2px solid #d5e2f1}
+form{max-width:920px;margin:auto}
+fieldset{margin:24px 0;padding:24px;border:0;border-radius:8px;background:#fff;box-shadow:0 2px 8px rgba(16,55,92,.08)}
+label{display:block;margin-top:9px;font-weight:600}
+input[type=text],input[type=date],input[type=number],textarea,select{
+  width:100%;max-width:430px;padding:8px 10px;margin-top:4px;border:1px solid #cfd8e3;border-radius:6px;font:inherit
+}
+textarea{resize:vertical}
+input[type=checkbox],input[type=radio]{transform:scale(1.05);margin-right:6px}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:.94rem}
+th,td{border:1px solid #d9e0ea;padding:8px 10px;text-align:left}
+th{background:#eef4fb;font-weight:600}
+tr:nth-child(even) td{background:#fafbfc}
+.small{font-size:.85rem;color:#555}
+@media(max-width:600px){
+  body{padding:24px 4px}
+  input,textarea,select{max-width:100%}
+}
+</style>
+</head>
+<body>
+
+<h1>Ill-Health Retirement Assessment – Employee Questionnaire</h1>
+
+<form>
+
+<!-- 1 Personal -->
+<fieldset>
+  <h2>1 │ Personal &amp; Employment Details</h2>
+  <label>Full Name <input type="text" required></label>
+  <label>Date of Birth <input type="date"></label>
+  <label>Payroll / Employee No. <input type="text"></label>
+  <label>Home Address <textarea rows="2"></textarea></label>
+  <label>Phone &amp; Email <input type="text"></label>
+  <label>Job Title <input type="text"></label>
+  <label>Department &amp; Work Location <input type="text"></label>
+  <label>Employment Type
+    <select><option>Permanent</option><option>Fixed-term</option><option>Other</option></select>
+  </label>
+  <label>Length of Service (years &amp; months) <input type="text"></label>
+  <label>Pension Scheme Name / Ref. <input type="text"></label>
+</fieldset>
+
+<!-- 2 Condition overview -->
+<fieldset>
+  <h2>2 │ Overview of Health Condition(s)</h2>
+  <table>
+    <tr><th>Item</th><th>Response</th></tr>
+    <tr><td>Primary diagnosis (ICD-10 if known)</td><td><input type="text"></td></tr>
+    <tr><td>Date first diagnosed / injury occurred</td><td><input type="text"></td></tr>
+    <tr><td>Secondary diagnoses / comorbidities</td><td><input type="text"></td></tr>
+    <tr><td>Current clinical status</td>
+        <td><select><option>Stable</option><option>Deteriorating</option><option>Fluctuating</option><option>Improving</option></select></td></tr>
+    <tr><td>Treating consultant(s) &amp; discipline</td><td><input type="text"></td></tr>
+    <tr><td>Next scheduled specialist appointment</td><td><input type="date"></td></tr>
+    <tr><td>Latest investigations &amp; key results</td><td><textarea rows="2"></textarea></td></tr>
+  </table>
+</fieldset>
+
+<!-- 3 Treatment -->
+<fieldset>
+  <h2>3 │ Treatment History &amp; Prognosis</h2>
+  <table>
+    <tr><th>Question</th><th>Response</th></tr>
+    <tr><td>All treatments tried &amp; outcomes</td><td><textarea rows="2"></textarea></td></tr>
+    <tr><td>Ongoing treatment plan</td><td><textarea rows="2"></textarea></td></tr>
+    <tr><td>Further treatments likely to improve capacity?</td>
+        <td><select><option>Yes</option><option>No</option><option>Uncertain</option></select></td></tr>
+    <tr><td>Consultant’s stated prognosis</td><td><textarea rows="2"></textarea></td></tr>
+    <tr><td>Expected course of condition (2–3 yrs)</td><td><textarea rows="2"></textarea></td></tr>
+  </table>
+</fieldset>
+
+<!-- 4 Functional capacity -->
+<fieldset>
+  <h2>4 │ Functional Capacity (Current Best)</h2>
+  <p class="small">Tick the column that best describes your ability with usual aids/medication.</p>
+  <table>
+    <tr><th>Activity / Demand</th><th>No limitation</th><th>Mild</th><th>Moderate</th><th>Severe / Unable</th></tr>
+    <tr><td>Walking 100 m on level ground</td><td><input type="radio" name="walk"></td><td><input type="radio" name="walk"></td><td><input type="radio" name="walk"></td><td><input type="radio" name="walk"></td></tr>
+    <tr><td>Standing ≥15 min</td><td><input type="radio" name="stand"></td><td><input type="radio" name="stand"></td><td><input type="radio" name="stand"></td><td><input type="radio" name="stand"></td></tr>
+    <tr><td>Sitting ≥30 min</td><td><input type="radio" name="sit"></td><td><input type="radio" name="sit"></td><td><input type="radio" name="sit"></td><td><input type="radio" name="sit"></td></tr>
+    <tr><td>Climbing one flight of stairs</td><td><input type="radio" name="stairs"></td><td><input type="radio" name="stairs"></td><td><input type="radio" name="stairs"></td><td><input type="radio" name="stairs"></td></tr>
+    <tr><td>Lifting 5 kg waist-to-table</td><td><input type="radio" name="lift"></td><td><input type="radio" name="lift"></td><td><input type="radio" name="lift"></td><td><input type="radio" name="lift"></td></tr>
+    <tr><td>Fine hand use / keyboarding</td><td><input type="radio" name="hand"></td><td><input type="radio" name="hand"></td><td><input type="radio" name="hand"></td><td><input type="radio" name="hand"></td></tr>
+    <tr><td>Concentration &amp; decision-making</td><td><input type="radio" name="conc"></td><td><input type="radio" name="conc"></td><td><input type="radio" name="conc"></td><td><input type="radio" name="conc"></td></tr>
+    <tr><td>Reliable attendance (≥4 days/wk)</td><td><input type="radio" name="att"></td><td><input type="radio" name="att"></td><td><input type="radio" name="att"></td><td><input type="radio" name="att"></td></tr>
+  </table>
+  <label>If Moderate or Severe/Unable ticked, give examples<br><textarea rows="2"></textarea></label>
+</fieldset>
+
+<!-- 5 Employment & Rehab -->
+<fieldset>
+  <h2>5 │ Employment &amp; Rehabilitation Efforts</h2>
+  <label>Date last worked full contractual duties <input type="date"></label>
+  <label>Phased returns / modified duties / adjustments attempted (with dates)<br><textarea rows="2"></textarea></label>
+  <label>Effectiveness of adjustments
+    <select><option>Fully</option><option>Partly</option><option>Not at all</option></select></label>
+  <label>EAP / counselling / vocational rehab accessed?
+    <input type="checkbox"> Yes <input type="checkbox"> No – details <input type="text"></label>
+  <label>Alternative roles considered within organisation?
+    <input type="checkbox"> Yes <input type="checkbox"> No – outcomes <textarea rows="2"></textarea></label>
+</fieldset>
+
+<!-- 6 ADL -->
+<fieldset>
+  <h2>6 │ Impact on Daily Living (Non-work)</h2>
+  <table>
+    <tr><th>Domain</th><th>Describe limitations</th></tr>
+    <tr><td>Personal care (washing, dressing)</td><td><textarea rows="2"></textarea></td></tr>
+    <tr><td>Household tasks (shopping, cooking)</td><td><textarea rows="2"></textarea></td></tr>
+    <tr><td>Driving / public transport</td><td><textarea rows="2"></textarea></td></tr>
+    <tr><td>Leisure &amp; social participation</td><td><textarea rows="2"></textarea></td></tr>
+  </table>
+</fieldset>
+
+<!-- 7 Pension awareness -->
+<fieldset>
+  <h2>7 │ Pension Scheme Criteria Awareness</h2>
+  <label><input type="checkbox"> I have read the scheme rules on ill-health retirement</label>
+  <label><input type="checkbox"> I understand Tier 1 / Tier 2 distinction</label>
+  <label>Application type:
+    <select><option>Permanent incapacity (any employment)</option><option>Partial incapacity (current role only)</option></select></label>
+</fieldset>
+
+<!-- 8 Evidence checklist -->
+<fieldset>
+  <h2>8 │ Supporting Evidence Checklist</h2>
+  <table>
+    <tr><th>Document</th><th>Tick</th></tr>
+    <tr><td>Latest consultant / hospital letter</td><td><input type="checkbox"></td></tr>
+    <tr><td>GP summary print-out</td><td><input type="checkbox"></td></tr>
+    <tr><td>Imaging / laboratory results</td><td><input type="checkbox"></td></tr>
+    <tr><td>Physiotherapy / OT reports</td><td><input type="checkbox"></td></tr>
+    <tr><td>Previous OH assessments</td><td><input type="checkbox"></td></tr>
+    <tr><td>Fit notes covering last 12 months</td><td><input type="checkbox"></td></tr>
+    <tr><td>Vocational rehab / adjustment reports</td><td><input type="checkbox"></td></tr>
+  </table>
+</fieldset>
+
+<!-- 9 Declaration -->
+<fieldset>
+  <h2>9 │ Declaration &amp; Consent</h2>
+  <p>I certify that the information provided is true and complete. I authorise the Occupational Health provider to request further medical information if required and consent to an OH medical assessment. I understand an OH opinion may be shared with my employer and pension trustees.</p>
+  <label>Signature ____________________________</label><br>
+  <label>Date ____ / ____ / 20__</label>
+</fieldset>
+
+</form>
+</body>
+</html>
