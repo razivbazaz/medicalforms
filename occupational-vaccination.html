@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Occupational Vaccination Counselling – Employee Questionnaire</title>
+<style>
+/* ---- shared clean UI ---- */
+*{box-sizing:border-box}
+body{margin:0;padding:40px 8px;font-family:"Segoe UI",Roboto,Arial,sans-serif;background:#f2f4f7;color:#222}
+h1{margin:0 0 20px;font-size:1.9rem;font-weight:600;text-align:center;color:#10375c}
+h2{margin:0 0 14px;padding-bottom:6px;font-size:1.15rem;color:#10375c;border-bottom:2px solid #d5e2f1}
+form{max-width:920px;margin:auto}
+fieldset{margin:24px 0;padding:24px;border:0;border-radius:8px;background:#fff;box-shadow:0 2px 8px rgba(16,55,92,.08)}
+label{display:block;margin-top:9px;font-weight:600}
+input[type=text],input[type=date],textarea{
+  width:100%;max-width:430px;padding:8px 10px;margin-top:4px;border:1px solid #cfd8e3;border-radius:6px;font:inherit
+}
+textarea{resize:vertical}
+input[type=checkbox]{transform:scale(1.05);margin-right:6px}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:.94rem}
+th,td{border:1px solid #d9e0ea;padding:8px 10px;text-align:left}
+th{background:#eef4fb;font-weight:600}
+tr:nth-child(even) td{background:#fafbfc}
+.small{font-size:.85rem;color:#555}
+@media(max-width:600px){
+  body{padding:24px 4px}
+  input,textarea{max-width:100%}
+}
+</style>
+</head>
+<body>
+
+<h1>Occupational Vaccination Counselling – Employee Questionnaire</h1>
+
+<form>
+
+<!-- 1 Personal & Role -->
+<fieldset>
+  <h2>1 │ Personal &amp; Role Details</h2>
+  <label>Full Name <input type="text" required></label>
+  <label>Date of Birth <input type="date"></label>
+  <label>Job Title <input type="text"></label>
+  <label>Department / Work Location <input type="text"></label>
+  <label>Exposure risk (clinical, laboratory, waste, travel) – describe<br>
+    <textarea rows="2"></textarea></label>
+</fieldset>
+
+<!-- 2 Immunisation history -->
+<fieldset>
+  <h2>2 │ Immunisation History</h2>
+  <table>
+    <tr><th>Vaccine / Test</th><th>Date(s)</th><th>Record attached?</th></tr>
+    <tr><td>Hepatitis B (3-dose course)</td><td><input type="text"></td><td><input type="checkbox"></td></tr>
+    <tr><td>Hepatitis B titre result</td><td><input type="text"></td><td><input type="checkbox"></td></tr>
+    <tr><td>BCG (TB) / IGRA</td><td><input type="text"></td><td><input type="checkbox"></td></tr>
+    <tr><td>Measles / Mumps / Rubella (MMR)</td><td><input type="text"></td><td><input type="checkbox"></td></tr>
+    <tr><td>Varicella (chickenpox)</td><td><input type="text"></td><td><input type="checkbox"></td></tr>
+    <tr><td>Tetanus / Diphtheria / Polio</td><td><input type="text"></td><td><input type="checkbox"></td></tr>
+    <tr><td>Influenza (last season)</td><td><input type="text"></td><td><input type="checkbox"></td></tr>
+    <tr><td>COVID-19 doses &amp; date</td><td><input type="text"></td><td><input type="checkbox"></td></tr>
+    <tr><td>Other (e.g., rabies, typhoid)</td><td><input type="text"></td><td><input type="checkbox"></td></tr>
+  </table>
+</fieldset>
+
+<!-- 3 Contraindications -->
+<fieldset>
+  <h2>3 │ Contra-Indications / Allergies</h2>
+  <label>Any severe allergy (egg, neomycin, latex) or previous adverse vaccine reaction?<br>
+    <textarea rows="2"></textarea></label>
+</fieldset>
+
+<!-- 4 Vaccines requested -->
+<fieldset>
+  <h2>4 │ Vaccines Requested / Advised</h2>
+  <p class="small">Based on your role and history, Occupational Health will advise which vaccines are recommended. Tick any you believe you need:</p>
+  <label><input type="checkbox"> Hepatitis B</label>
+  <label><input type="checkbox"> Tetanus / Diphtheria / Polio</label>
+  <label><input type="checkbox"> Measles / Mumps / Rubella</label>
+  <label><input type="checkbox"> Varicella (chickenpox)</label>
+  <label><input type="checkbox"> Seasonal Influenza</label>
+  <label><input type="checkbox"> COVID-19 booster</label>
+  <label><input type="checkbox"> Tuberculosis (BCG) / IGRA</label>
+  <label><input type="checkbox"> Other – specify <input type="text" style="max-width:260px"></label>
+</fieldset>
+
+<!-- 5 Consent -->
+<fieldset>
+  <h2>5 │ Consent</h2>
+  <p>I consent to receive occupational vaccinations as advised by the Occupational Health provider and understand the potential benefits and risks have been explained to me.</p>
+  <label>Signature ____________________________</label><br>
+  <label>Date ____ / ____ / 20__</label>
+</fieldset>
+
+</form>
+</body>
+</html>
