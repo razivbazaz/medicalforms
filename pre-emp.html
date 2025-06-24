@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Pre-Employment Medical Questionnaire</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;padding:40px 8px;font-family:"Segoe UI",Roboto,Arial,sans-serif;background:#f2f4f7;color:#222}
+h1{margin:0 0 20px;font-size:1.9rem;font-weight:600;text-align:center;color:#10375c}
+h2{margin:0 0 14px;padding-bottom:6px;font-size:1.15rem;color:#10375c;border-bottom:2px solid #d5e2f1}
+form{max-width:920px;margin:auto}
+fieldset{margin:24px 0;padding:24px;border:0;border-radius:8px;background:#fff;box-shadow:0 2px 8px rgba(16,55,92,.08)}
+label{display:block;margin-top:9px;font-weight:600}
+input[type=text],input[type=date],input[type=number],textarea,select{
+  width:100%;max-width:430px;padding:8px 10px;margin-top:4px;border:1px solid #cfd8e3;border-radius:6px;font:inherit
+}
+textarea{resize:vertical}
+input[type=checkbox],input[type=radio]{transform:scale(1.05);margin-right:6px}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:.94rem}
+th,td{border:1px solid #d9e0ea;padding:8px 10px;text-align:left}
+th{background:#eef4fb;font-weight:600}
+tr:nth-child(even) td{background:#fafbfc}
+.small{font-size:.85rem;color:#555}
+@media(max-width:600px){
+  body{padding:24px 4px}
+  input[type=text],input[type=date],input[type=number],textarea,select{max-width:100%}
+}
+</style>
+</head>
+<body>
+
+<h1>Pre-Employment Medical Questionnaire</h1>
+<p class="small" style="text-align:center">
+  All information is confidential and reviewed only by Occupational Health.
+</p>
+
+<form>
+
+<!-- 1 -->
+<fieldset>
+<h2>1 │ Personal &amp; Job Details</h2>
+<label>Full Name <input type="text" name="fullName" required></label>
+<label>Date of Birth <input type="date" name="dob" required></label>
+<label>Phone Number <input type="text" name="phone"></label>
+<label>Email Address <input type="text" name="email"></label>
+<label>Home Address <textarea name="address" rows="2"></textarea></label>
+<label>Job Title Offered <input type="text" name="jobTitle"></label>
+<label>Department / Location <input type="text" name="department"></label>
+<label>Expected Start Date <input type="date" name="startDate"></label>
+<label>Work Pattern
+  <select name="workPattern">
+    <option value="">-- select --</option>
+    <option>Full-Time</option><option>Part-Time</option>
+    <option>Shift</option><option>Remote</option>
+  </select>
+</label>
+</fieldset>
+
+<!-- 2 -->
+<fieldset>
+<h2>2 │ Lifestyle &amp; Risk Disclosure</h2>
+<label><input type="checkbox" name="smoke"> I smoke
+  <span class="small">(cigarettes per day <input type="number" name="cigs" min="0" style="width:80px">)</span>
+</label>
+<label><input type="checkbox" name="alcohol"> I drink alcohol
+  <span class="small">(units per week <input type="number" name="units" min="0" style="width:80px">)</span>
+</label>
+<label><input type="checkbox" name="drugs"> Recreational drug use in last 5 years</label>
+</fieldset>
+
+<!-- 3 -->
+<fieldset>
+<h2>3 │ Occupational Exposure &amp; Work Requirements</h2>
+<table>
+<tr><th>Exposure / Task</th><th>Yes</th><th>No</th></tr>
+<tr><td>Working at height</td><td><input type="radio" name="height" value="yes"></td><td><input type="radio" name="height" value="no"></td></tr>
+<tr><td>Manual handling &gt;10 kg</td><td><input type="radio" name="manual" value="yes"></td><td><input type="radio" name="manual" value="no"></td></tr>
+<tr><td>Driving company vehicle</td><td><input type="radio" name="drive" value="yes"></td><td><input type="radio" name="drive" value="no"></td></tr>
+<tr><td>Shift / night work</td><td><input type="radio" name="shift" value="yes"></td><td><input type="radio" name="shift" value="no"></td></tr>
+<tr><td>Chemical handling</td><td><input type="radio" name="chem" value="yes"></td><td><input type="radio" name="chem" value="no"></td></tr>
+<tr><td>Patient care</td><td><input type="radio" name="patient" value="yes"></td><td><input type="radio" name="patient" value="no"></td></tr>
+<tr><td>Prolonged computer work</td><td><input type="radio" name="dse" value="yes"></td><td><input type="radio" name="dse" value="no"></td></tr>
+</table>
+</fieldset>
+
+<!-- 4 -->
+<fieldset>
+<h2>4 │ Medical History (ever diagnosed)</h2>
+<table>
+<tr><th>System &amp; Example Conditions</th><th>Yes</th><th>Details</th></tr>
+<tr><td>Respiratory – asthma, chronic cough, breathlessness, TB</td><td><input type="checkbox" name="resp"></td><td><input type="text" name="respDet"></td></tr>
+<tr><td>Cardiovascular – high BP, chest pain, irregular heartbeat</td><td><input type="checkbox" name="cardio"></td><td><input type="text" name="cardioDet"></td></tr>
+<tr><td>Neurological – seizures, migraines, stroke, numbness</td><td><input type="checkbox" name="neuro"></td><td><input type="text" name="neuroDet"></td></tr>
+<tr><td>Musculoskeletal – back pain, arthritis, repetitive strain injury</td><td><input type="checkbox" name="msk"></td><td><input type="text" name="mskDet"></td></tr>
+<tr><td>Skin – eczema, psoriasis, dermatitis</td><td><input type="checkbox" name="skin"></td><td><input type="text" name="skinDet"></td></tr>
+<tr><td>Endocrine – diabetes, thyroid disease</td><td><input type="checkbox" name="endo"></td><td><input type="text" name="endoDet"></td></tr>
+<tr><td>Gastrointestinal – ulcers, IBS, hepatitis</td><td><input type="checkbox" name="gi"></td><td><input type="text" name="giDet"></td></tr>
+<tr><td>Genitourinary – kidney stones, urinary problems</td><td><input type="checkbox" name="gu"></td><td><input type="text" name="guDet"></td></tr>
+<tr><td>Eyes/Ears – glaucoma, cataracts, hearing loss, tinnitus</td><td><input type="checkbox" name="eyes"></td><td><input type="text" name="eyesDet"></td></tr>
+<tr><td>Mental Health – depression, anxiety, eating disorders</td><td><input type="checkbox" name="mental"></td><td><input type="text" name="mentalDet"></td></tr>
+<tr><td>Blood / Immune – anaemia, bleeding disorders, HIV</td><td><input type="checkbox" name="blood"></td><td><input type="text" name="bloodDet"></td></tr>
+</table>
+</fieldset>
+
+<!-- 5 -->
+<fieldset>
+<h2>5 │ Current / Recent Symptoms (past 6 months)</h2>
+<table>
+<tr><th>Symptom</th><th>Yes</th><th>Symptom</th><th>Yes</th></tr>
+<tr><td>Chest pain / tightness</td><td><input type="checkbox" name="s1"></td><td>Tingling / numbness</td><td><input type="checkbox" name="s2"></td></tr>
+<tr><td>Shortness of breath on exertion</td><td><input type="checkbox" name="s3"></td><td>Visual difficulties</td><td><input type="checkbox" name="s4"></td></tr>
+<tr><td>Persistent cough</td><td><input type="checkbox" name="s5"></td><td>Hearing ringing (tinnitus)</td><td><input type="checkbox" name="s6"></td></tr>
+<tr><td>Frequent headaches</td><td><input type="checkbox" name="s7"></td><td>Skin rashes</td><td><input type="checkbox" name="s8"></td></tr>
+<tr><td>Dizzy spells / balance issues</td><td><input type="checkbox" name="s9"></td><td>Allergies causing breathing issues</td><td><input type="checkbox" name="s10"></td></tr>
+<tr><td>Back or neck pain</td><td><input type="checkbox" name="s11"></td><td>Epileptic seizure</td><td><input type="checkbox" name="s12"></td></tr>
+<tr><td>Joint stiffness or swelling</td><td><input type="checkbox" name="s13"></td><td>Palpitations</td><td><input type="checkbox" name="s14"></td></tr>
+<tr><td>Abdominal pain / heartburn</td><td><input type="checkbox" name="s15"></td><td>Frequent infections</td><td><input type="checkbox" name="s16"></td></tr>
+<tr><td>Unexplained weight loss</td><td><input type="checkbox" name="s17"></td><td>Fatigue impacting daily life</td><td><input type="checkbox" name="s18"></td></tr>
+<tr><td>Low mood or excessive worry</td><td><input type="checkbox" name="s19"></td><td>Episodes of loss of consciousness</td><td><input type="checkbox" name="s20"></td></tr>
+<tr><td>Sleep disturbance</td><td><input type="checkbox" name="s21"></td><td>High blood pressure readings</td><td><input type="checkbox" name="s22"></td></tr>
+</table>
+</fieldset>
+
+<!-- 6 -->
+<fieldset>
+<h2>6 │ Hobbies, Sports or Regular Activities</h2>
+<textarea name="hobbies" rows="3" placeholder="e.g., contact sports, weightlifting, woodworking, gaming marathons, volunteering…"></textarea>
+</fieldset>
+
+<!-- 7 -->
+<fieldset>
+<h2>7 │ Current Medication &amp; Allergies</h2>
+<label>Current medication:
+  <textarea name="medication" rows="2"></textarea>
+</label>
+<label>Allergies (drug, food, latex):
+  <textarea name="allergies" rows="2"></textarea>
+</label>
+</fieldset>
+
+<!-- 8 -->
+<fieldset>
+<h2>8 │ Immunisation &amp; Infectious Disease History</h2>
+<table>
+<tr><th>Vaccine / Test</th><th>Date (if known)</th><th>Record attached?</th></tr>
+<tr><td>Hepatitis B series</td><td><input type="text" name="hepBDate"></td><td><input type="checkbox" name="hepBFile"></td></tr>
+<tr><td>Tetanus booster</td><td><input type="text" name="tetanusDate"></td><td><input type="checkbox" name="tetFile"></td></tr>
+<tr><td>MMR</td><td><input type="text" name="mmrDate"></td><td><input type="checkbox" name="mmrFile"></td></tr>
+<tr><td>Varicella (chickenpox)</td><td><input type="text" name="varDate"></td><td><input type="checkbox" name="varFile"></td></tr>
+<tr><td>BCG / TB test</td><td><input type="text" name="bcgDate"></td><td><input type="checkbox" name="bcgFile"></td></tr>
+<tr><td>COVID-19 doses</td><td><input type="text" name="covidDate"></td><td><input type="checkbox" name="covidFile"></td></tr>
+</table>
+</fieldset>
+
+<!-- 9 -->
+<fieldset>
+<h2>9 │ Declaration &amp; Consent</h2>
+<p>I declare the information provided is true and complete. I understand this questionnaire helps assess my fitness for the role and any workplace adjustments required. I consent to Occupational Health processing this data and, with my agreement, sharing relevant advice with my employer.</p>
+<label>Signature: ____________________________</label><br>
+<label>Date: ____ / ____ / 20__</label>
+</fieldset>
+
+</form>
+</body>
+</html>
