@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Case Management Review – Employee Questionnaire</title>
+<style>
+/* ---------- Shared clean UI ---------- */
+*{box-sizing:border-box}
+body{margin:0;padding:40px 8px;font-family:"Segoe UI",Roboto,Arial,sans-serif;background:#f2f4f7;color:#222}
+h1{margin:0 0 20px;font-size:1.9rem;font-weight:600;text-align:center;color:#10375c}
+h2{margin:0 0 14px;padding-bottom:6px;font-size:1.15rem;color:#10375c;border-bottom:2px solid #d5e2f1}
+form{max-width:920px;margin:auto}
+fieldset{margin:24px 0;padding:24px;border:0;border-radius:8px;background:#fff;box-shadow:0 2px 8px rgba(16,55,92,.08)}
+label{display:block;margin-top:9px;font-weight:600}
+input[type=text],input[type=date],input[type=number],textarea,select{
+  width:100%;max-width:430px;padding:8px 10px;margin-top:4px;border:1px solid #cfd8e3;border-radius:6px;font:inherit
+}
+textarea{resize:vertical}
+input[type=checkbox],input[type=radio]{transform:scale(1.05);margin-right:6px}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:.94rem}
+th,td{border:1px solid #d9e0ea;padding:8px 10px;text-align:left}
+th{background:#eef4fb;font-weight:600}
+tr:nth-child(even) td{background:#fafbfc}
+.small{font-size:.85rem;color:#555}
+@media(max-width:600px){
+  body{padding:24px 4px}
+  input,textarea,select{max-width:100%}
+}
+</style>
+</head>
+<body>
+
+<h1>Case Management Review – Employee Questionnaire</h1>
+
+<form>
+
+<!-- 1 ----------------------------------------------------------------- -->
+<fieldset>
+  <h2>1 │ Personal &amp; Employment Details</h2>
+  <label>Full Name <input type="text" required></label>
+  <label>Date of Birth <input type="date"></label>
+  <label>Employee ID / No. <input type="text"></label>
+  <label>Job Title <input type="text"></label>
+  <label>Department <input type="text"></label>
+  <label>Work Location <input type="text"></label>
+
+  <label>Contract Type
+    <select>
+      <option value="">-- select --</option>
+      <option>Permanent</option><option>Fixed-term</option><option>Agency</option><option>Other</option>
+    </select>
+  </label>
+
+  <label>Manager / HR Contact <input type="text"></label>
+  <label>Phone <input type="text"></label>
+  <label>Email <input type="text"></label>
+
+  <label>Current status
+    <select>
+      <option value="">-- select --</option>
+      <option>Working normally</option><option>Modified duties</option>
+      <option>Sick leave</option><option>Phased return</option>
+    </select>
+  </label>
+</fieldset>
+
+<!-- 2 ----------------------------------------------------------------- -->
+<fieldset>
+  <h2>2 │ Condition &amp; Clinical History</h2>
+  <table>
+    <tr><th>Item</th><th>Details</th></tr>
+    <tr><td>Primary diagnosis (ICD-10 if known)</td><td><input type="text"></td></tr>
+    <tr><td>Date first diagnosed / injury occurred</td><td><input type="text"></td></tr>
+    <tr><td>Current severity</td>
+        <td><select><option>Mild</option><option>Moderate</option><option>Severe</option><option>Fluctuating</option></select></td></tr>
+    <tr><td>Secondary diagnoses / comorbidities</td><td><input type="text"></td></tr>
+    <tr><td>Treating GP &amp; Specialist(s)</td><td><input type="text"></td></tr>
+    <tr><td>Current treatment plan</td><td><textarea rows="2"></textarea></td></tr>
+    <tr><td>Investigations in last 12 months &amp; results</td><td><textarea rows="2"></textarea></td></tr>
+    <tr><td>Allergies / adverse drug reactions</td><td><input type="text"></td></tr>
+  </table>
+</fieldset>
+
+<!-- 3 ----------------------------------------------------------------- -->
+<fieldset>
+  <h2>3 │ Recent Absence &amp; Work History</h2>
+  <label>Current episode – From <input type="date"> to <input type="date">
+    (days <input type="number" style="width:90px">)</label>
+
+  <label>Absences &gt;7 days in past 24 months (date &amp; cause)
+    <textarea rows="2"></textarea></label>
+
+  <label>Longest continuous absence for this condition (days)
+    <input type="number" style="width:120px"></label>
+
+  <label>Submitted fit notes for every absence?
+    <input type="radio" name="fitnotes" value="yes"> Yes
+    <input type="radio" name="fitnotes" value="no"> No
+  </label>
+</fieldset>
+
+<!-- 4 ----------------------------------------------------------------- -->
+<fieldset>
+  <h2>4 │ Functional Capacity Matrix</h2>
+  <p class="small">Tick the column that best reflects your present ability.</p>
+  <table>
+    <tr><th>Activity / Demand</th><th>No&nbsp;problem</th><th>Mild</th><th>Marked</th><th>Unable</th></tr>
+    <tr><td>Walking ≥200 m</td><td><input type="radio" name="walk"></td><td><input type="radio" name="walk"></td><td><input type="radio" name="walk"></td><td><input type="radio" name="walk"></td></tr>
+    <tr><td>Standing ≥30 min</td><td><input type="radio" name="stand"></td><td><input type="radio" name="stand"></td><td><input type="radio" name="stand"></td><td><input type="radio" name="stand"></td></tr>
+    <tr><td>Sitting ≥60 min</td><td><input type="radio" name="sit"></td><td><input type="radio" name="sit"></td><td><input type="radio" name="sit"></td><td><input type="radio" name="sit"></td></tr>
+    <tr><td>Lifting &gt;10 kg</td><td><input type="radio" name="lift"></td><td><input type="radio" name="lift"></td><td><input type="radio" name="lift"></td><td><input type="radio" name="lift"></td></tr>
+    <!-- Add remaining activities as required -->
+  </table>
+  <label>Add detail where “Marked” or “Unable”<br>
+    <textarea rows="2"></textarea></label>
+</fieldset>
+
+<!-- 5 ----------------------------------------------------------------- -->
+<fieldset>
+  <h2>5 │ Psychosocial &amp; Lifestyle Factors</h2>
+  <table>
+    <tr><th>Question</th><th>Yes</th><th>No</th><th>Details</th></tr>
+    <tr><td>Sleep disturbance</td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="text"></td></tr>
+    <tr><td>Mood issues (low mood, anxiety)</td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="text"></td></tr>
+    <tr><td>Work-related stress / conflict</td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="text"></td></tr>
+    <tr><td>Financial strain due to sickness</td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="text"></td></tr>
+    <tr><td>Substance use above safe limits</td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="text"></td></tr>
+  </table>
+
+  <label>EAP / counselling accessed?
+    <input type="checkbox"> Yes <input type="checkbox"> No
+    – Provider &amp; sessions <input type="text"></label>
+</fieldset>
+
+<!-- 6 Workplace Adjustments (condensed) -->
+<fieldset>
+  <h2>6 │ Workplace Adjustments</h2>
+  <label>Adjustments already in place (effectiveness noted)<br><textarea rows="2"></textarea></label>
+  <label>Additional adjustments requested (tick):<br>
+    <input type="checkbox"> Phased hours
+    <input type="checkbox"> Altered duties
+    <input type="checkbox"> Assistive tech
+    <input type="checkbox"> Remote / hybrid
+    <input type="checkbox"> Environment changes
+  </label>
+</fieldset>
+
+<!-- 7 Declaration -->
+<fieldset>
+  <h2>7 │ Employee Declaration &amp; Consent</h2>
+  <p>I declare the information above is accurate and complete. I consent to Occupational Health processing this data to support my case management and, with my permission, sharing relevant advice with my employer.</p>
+  <label>Signature: ____________________________</label><br>
+  <label>Date: ____ / ____ / 20__</label>
+</fieldset>
+
+</form>
+</body>
+</html>
