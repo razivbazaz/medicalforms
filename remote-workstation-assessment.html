@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Remote Workstation / Ergonomic Assessment – Employee Questionnaire</title>
+<style>
+/* ---- shared clean UI ---- */
+*{box-sizing:border-box}
+body{margin:0;padding:40px 8px;font-family:"Segoe UI",Roboto,Arial,sans-serif;background:#f2f4f7;color:#222}
+h1{margin:0 0 20px;font-size:1.9rem;font-weight:600;text-align:center;color:#10375c}
+h2{margin:0 0 14px;padding-bottom:6px;font-size:1.15rem;color:#10375c;border-bottom:2px solid #d5e2f1}
+form{max-width:920px;margin:auto}
+fieldset{margin:24px 0;padding:24px;border:0;border-radius:8px;background:#fff;box-shadow:0 2px 8px rgba(16,55,92,.08)}
+label{display:block;margin-top:9px;font-weight:600}
+input,textarea,select{
+  width:100%;max-width:430px;padding:8px 10px;margin-top:4px;border:1px solid #cfd8e3;border-radius:6px;font:inherit
+}
+textarea{resize:vertical}
+input[type=checkbox],input[type=radio]{transform:scale(1.05);margin-right:6px}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:.94rem}
+th,td{border:1px solid #d9e0ea;padding:8px 10px;text-align:left}
+th{background:#eef4fb;font-weight:600}
+tr:nth-child(even) td{background:#fafbfc}
+.small{font-size:.85rem;color:#555}
+@media(max-width:600px){
+  body{padding:24px 4px}
+  input,textarea,select{max-width:100%}
+}
+</style>
+</head>
+<body>
+
+<h1>Remote Workstation / Ergonomic Assessment – Employee Questionnaire</h1>
+
+<form>
+
+<!-- 1 Personal & Role Details -->
+<fieldset>
+  <h2>1 │ Personal &amp; Role Details</h2>
+  <table>
+    <tr><th>Field</th><th>Response</th></tr>
+    <tr><td>Full Name</td><td><input type="text"></td></tr>
+    <tr><td>Job Title / Team</td><td><input type="text"></td></tr>
+    <tr><td>Line Manager</td><td><input type="text"></td></tr>
+    <tr><td>Work e-mail &amp; phone</td><td><input type="text"></td></tr>
+    <tr><td>Primary work location (home / co-working)</td><td><input type="text"></td></tr>
+    <tr><td>Average hours per day at this workstation</td><td><input type="text"></td></tr>
+    <tr><td>Days per week working remotely</td>
+        <td>
+          <label><input type="radio" name="days" value="1-2"> 1–2</label>
+          <label><input type="radio" name="days" value="3-4"> 3–4</label>
+          <label><input type="radio" name="days" value="5"> 5</label>
+        </td></tr>
+  </table>
+</fieldset>
+
+<!-- 2 Equipment Inventory -->
+<fieldset>
+  <h2>2 │ Workstation Equipment Inventory</h2>
+  <p class="small">Tick what you routinely use:</p>
+  <table>
+    <tr><th>Item</th><th>Employer</th><th>Own</th></tr>
+    <tr><td>Adjustable office chair</td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+    <tr><td>Adjustable desk / sit-stand</td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+    <tr><td>Separate monitor(s)</td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+    <tr><td>Laptop stand / riser</td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+    <tr><td>External keyboard</td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+    <tr><td>External mouse / trackball</td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+    <tr><td>Headset / headphones</td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+    <tr><td>Footrest</td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+    <tr><td>Document holder</td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+  </table>
+  <label>If missing essential kit, list here<br><textarea rows="2"></textarea></label>
+</fieldset>
+
+<!-- 3 Chair & Desk Setup -->
+<fieldset>
+  <h2>3 │ Chair &amp; Desk Setup</h2>
+  <table>
+    <tr><th>Question</th><th>Yes</th><th>No</th><th>Comment / Measurement</th></tr>
+    <tr><td>Chair height allows feet flat on floor/footrest</td><td><input type="radio" name="chair1"></td><td><input type="radio" name="chair1"></td><td><input type="text"></td></tr>
+    <tr><td>Backrest supports lumbar curve</td><td><input type="radio" name="chair2"></td><td><input type="radio" name="chair2"></td><td><input type="text"></td></tr>
+    <tr><td>Desk height at elbow level when seated</td><td><input type="radio" name="desk1"></td><td><input type="radio" name="desk1"></td><td><input type="text"></td></tr>
+  </table>
+</fieldset>
+
+<!-- 4 Screen & Input Devices -->
+<fieldset>
+  <h2>4 │ Screen &amp; Input Devices</h2>
+  <table>
+    <tr><th>Question</th><th>Yes</th><th>No</th><th>Comment</th></tr>
+    <tr><td>Top of screen roughly at eye level</td><td><input type="radio" name="scr1"></td><td><input type="radio" name="scr1"></td><td><input type="text"></td></tr>
+    <tr><td>Screen distance 50–70&nbsp;cm</td><td><input type="radio" name="scr2"></td><td><input type="radio" name="scr2"></td><td><input type="text"></td></tr>
+    <tr><td>No glare/reflection on screen</td><td><input type="radio" name="scr3"></td><td><input type="radio" name="scr3"></td><td><input type="text"></td></tr>
+  </table>
+</fieldset>
+
+<!-- 5 Environmental Factors -->
+<fieldset>
+  <h2>5 │ Environmental Factors</h2>
+  <table>
+    <tr><th>Factor</th><th>OK</th><th>Problem</th><th>Notes</th></tr>
+    <tr><td>Lighting</td><td><input type="radio" name="env1"></td><td><input type="radio" name="env1"></td><td><input type="text"></td></tr>
+    <tr><td>Temperature</td><td><input type="radio" name="env2"></td><td><input type="radio" name="env2"></td><td><input type="text"></td></tr>
+    <tr><td>Noise</td><td><input type="radio" name="env3"></td><td><input type="radio" name="env3"></td><td><input type="text"></td></tr>
+  </table>
+</fieldset>
+
+<!-- 6 Work Habits -->
+<fieldset>
+  <h2>6 │ Work Habits &amp; Breaks</h2>
+  <table>
+    <tr><th>Statement</th><th>Always</th><th>Sometimes</th><th>Rarely</th></tr>
+    <tr><td>Take a micro-break every 20–30 min</td><td><input type="radio" name="habit1"></td><td><input type="radio" name="habit1"></td><td><input type="radio" name="habit1"></td></tr>
+    <tr><td>Stand or walk at least once an hour</td><td><input type="radio" name="habit2"></td><td><input type="radio" name="habit2"></td><td><input type="radio" name="habit2"></td></tr>
+  </table>
+</fieldset>
+
+<!-- 7 Discomfort map -->
+<fieldset>
+  <h2>7 │ Discomfort / Pain Map</h2>
+  <p class="small">Tick level of regular discomfort.</p>
+  <table>
+    <tr><th>Area</th><th>None</th><th>Mild</th><th>Moderate</th><th>Severe</th></tr>
+    <tr><td>Neck</td><td><input type="radio" name="neck"></td><td><input type="radio" name="neck"></td><td><input type="radio" name="neck"></td><td><input type="radio" name="neck"></td></tr>
+    <tr><td>Lower back</td><td><input type="radio" name="lowback"></td><td><input type="radio" name="lowback"></td><td><input type="radio" name="lowback"></td><td><input type="radio" name="lowback"></td></tr>
+    <!-- add other body areas as needed -->
+  </table>
+  <label>If Moderate or Severe ticked, describe triggers<br><textarea rows="2"></textarea></label>
+</fieldset>
+
+<!-- 8 Photos checklist -->
+<fieldset>
+  <h2>8 │ Photos / Video Upload Checklist</h2>
+  <p class="small">Attach clear photos that show: side view, front view, chair adjustments, etc.</p>
+</fieldset>
+
+<!-- 9 Self-identified issues -->
+<fieldset>
+  <h2>9 │ Self-Identified Issues &amp; Actions Tried</h2>
+  <label>Issues noticed<br><textarea rows="2"></textarea></label>
+  <label>Adjustments already attempted<br><textarea rows="2"></textarea></label>
+  <label>Further support/equipment requested<br><textarea rows="2"></textarea></label>
+</fieldset>
+
+<!-- 10 Training -->
+<fieldset>
+  <h2>10 │ Training &amp; Guidance</h2>
+  <label><input type="checkbox"> Completed DSE/ergonomics e-learning (last 12 months)</label>
+  <label><input type="checkbox"> Reviewed company WFH ergonomics guide</label>
+  <label><input type="checkbox"> Would like additional training/coaching</label>
+</fieldset>
+
+<!-- 11 Declaration -->
+<fieldset>
+  <h2>11 │ Declaration &amp; Consent</h2>
+  <p>I confirm the information is accurate and consent to Occupational Health reviewing my assessment and photos to provide ergonomic advice and share relevant recommendations with my employer.</p>
+  <label>Signature ____________________________</label><br>
+  <label>Date ____ / ____ / 20__</label>
+</fieldset>
+
+</form>
+</body>
+</html>
