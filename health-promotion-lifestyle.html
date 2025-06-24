@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Health Promotion / Lifestyle Counselling – Self-Assessment</title>
+<style>
+/* ---- shared clean UI ---- */
+*{box-sizing:border-box}
+body{margin:0;padding:40px 8px;font-family:"Segoe UI",Roboto,Arial,sans-serif;background:#f2f4f7;color:#222}
+h1{margin:0 0 20px;font-size:1.9rem;font-weight:600;text-align:center;color:#10375c}
+h2{margin:0 0 14px;padding-bottom:6px;font-size:1.15rem;color:#10375c;border-bottom:2px solid #d5e2f1}
+form{max-width:920px;margin:auto}
+fieldset{margin:24px 0;padding:24px;border:0;border-radius:8px;background:#fff;box-shadow:0 2px 8px rgba(16,55,92,.08)}
+label{display:block;margin-top:9px;font-weight:600}
+input[type=text],input[type=number],textarea,select{
+  width:100%;max-width:430px;padding:8px 10px;margin-top:4px;border:1px solid #cfd8e3;border-radius:6px;font:inherit
+}
+textarea{resize:vertical}
+input[type=checkbox]{transform:scale(1.05);margin-right:6px}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:.94rem}
+th,td{border:1px solid #d9e0ea;padding:8px 10px;text-align:left}
+th{background:#eef4fb;font-weight:600}
+tr:nth-child(even) td{background:#fafbfc}
+.small{font-size:.85rem;color:#555}
+@media(max-width:600px){
+  body{padding:24px 4px}
+  input,textarea,select{max-width:100%}
+}
+</style>
+</head>
+<body>
+
+<h1>Health Promotion / Lifestyle Counselling – Self-Assessment</h1>
+
+<form>
+
+<!-- 1 Personal -->
+<fieldset>
+  <h2>1 │ Personal Details</h2>
+  <label>Name <input type="text" required></label>
+  <label>Age <input type="number" min="14" max="100" style="max-width:120px"></label>
+  <label>Job Role <input type="text"></label>
+  <label>Preferred contact (email / phone) <input type="text"></label>
+</fieldset>
+
+<!-- 2 Lifestyle Snapshot -->
+<fieldset>
+  <h2>2 │ Lifestyle Snapshot</h2>
+  <p class="small">Complete your current status, a realistic goal, and rate the priority 1 (low) – 5 (high).</p>
+  <table>
+    <tr><th>Factor</th><th>Current Status</th><th>Goal</th><th>Priority<br>(1–5)</th></tr>
+    <tr><td>Smoking (cig/day)</td><td><input type="text"></td><td><input type="text"></td><td><input type="number" min="1" max="5" style="width:70px"></td></tr>
+    <tr><td>Alcohol (units/week)</td><td><input type="text"></td><td><input type="text"></td><td><input type="number" min="1" max="5" style="width:70px"></td></tr>
+    <tr><td>Physical activity (min/week)</td><td><input type="text"></td><td><input type="text"></td><td><input type="number" min="1" max="5" style="width:70px"></td></tr>
+    <tr><td>Diet (fruit &amp; veg portions/day)</td><td><input type="text"></td><td><input type="text"></td><td><input type="number" min="1" max="5" style="width:70px"></td></tr>
+    <tr><td>Sleep (hrs/night)</td><td><input type="text"></td><td><input type="text"></td><td><input type="number" min="1" max="5" style="width:70px"></td></tr>
+    <tr><td>BMI / Weight (kg)</td><td><input type="text"></td><td><input type="text"></td><td><input type="number" min="1" max="5" style="width:70px"></td></tr>
+    <tr><td>Stress level (1–10)</td><td><input type="text"></td><td><input type="text"></td><td><input type="number" min="1" max="5" style="width:70px"></td></tr>
+  </table>
+</fieldset>
+
+<!-- 3 Readiness -->
+<fieldset>
+  <h2>3 │ Readiness to Change (next 3 months)</h2>
+  <label><input type="checkbox"> Quit smoking</label>
+  <label><input type="checkbox"> Reduce alcohol</label>
+  <label><input type="checkbox"> Increase exercise</label>
+  <label><input type="checkbox"> Improve diet</label>
+  <label><input type="checkbox"> Weight management</label>
+  <label><input type="checkbox"> Stress reduction</label>
+  <label><input type="checkbox"> Sleep hygiene</label>
+</fieldset>
+
+<!-- 4 Support -->
+<fieldset>
+  <h2>4 │ Support Wanted</h2>
+  <label><input type="checkbox"> 1-1 coaching</label>
+  <label><input type="checkbox"> Group workshop</label>
+  <label><input type="checkbox"> Online resources</label>
+  <label><input type="checkbox"> Referral to specialist</label>
+  <label>Other support needs<br><textarea rows="2"></textarea></label>
+</fieldset>
+
+<!-- 5 Declaration -->
+<fieldset>
+  <h2>5 │ Declaration</h2>
+  <p>I confirm that the information provided is accurate. I consent to Occupational Health using this information to offer lifestyle advice and support.</p>
+  <label>Signature ____________________________</label><br>
+  <label>Date ____ / ____ / 20__</label>
+</fieldset>
+
+</form>
+</body>
+</html>
