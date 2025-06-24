@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Management Referral Consultation – Manager Form</title>
+<style>
+/* ---- shared clean UI ---- */
+*{box-sizing:border-box}
+body{margin:0;padding:40px 8px;font-family:"Segoe UI",Roboto,Arial,sans-serif;background:#f2f4f7;color:#222}
+h1{margin:0 0 20px;font-size:1.9rem;font-weight:600;text-align:center;color:#10375c}
+h2{margin:0 0 14px;padding-bottom:6px;font-size:1.15rem;color:#10375c;border-bottom:2px solid #d5e2f1}
+form{max-width:920px;margin:auto}
+fieldset{margin:24px 0;padding:24px;border:0;border-radius:8px;background:#fff;box-shadow:0 2px 8px rgba(16,55,92,.08)}
+label{display:block;margin-top:9px;font-weight:600}
+input[type=text],input[type=date],textarea{
+  width:100%;max-width:430px;padding:8px 10px;margin-top:4px;border:1px solid #cfd8e3;border-radius:6px;font:inherit
+}
+textarea{resize:vertical}
+input[type=checkbox]{transform:scale(1.05);margin-right:6px}
+.small{font-size:.85rem;color:#555}
+@media(max-width:600px){
+  body{padding:24px 4px}
+  input,textarea{max-width:100%}
+}
+</style>
+</head>
+<body>
+
+<h1>Management Referral Consultation – Manager Form</h1>
+
+<form>
+
+<!-- 1 Employee details -->
+<fieldset>
+  <h2>1 │ Employee Details</h2>
+  <label>Employee Name <input type="text" required></label>
+  <label>Job Title <input type="text"></label>
+  <label>Employee ID <input type="text"></label>
+  <label>Department / Location <input type="text"></label>
+  <label>Length of Service <input type="text" placeholder="e.g., 3 years 4 months"></label>
+</fieldset>
+
+<!-- 2 Reason for referral -->
+<fieldset>
+  <h2>2 │ Reason for Referral (tick all that apply)</h2>
+  <label><input type="checkbox"> Long-term sickness (&gt; 4 weeks)</label>
+  <label><input type="checkbox"> Frequent short absences</label>
+  <label><input type="checkbox"> Work-performance / capability concerns</label>
+  <label><input type="checkbox"> Fitness to return after illness / injury</label>
+  <label><input type="checkbox"> Possible work-related condition</label>
+  <label><input type="checkbox"> Stress / mental-health concerns</label>
+  <label><input type="checkbox"> Advice on adjustments / Equality Act</label>
+  <label><input type="checkbox"> Other – specify <input type="text" style="max-width:260px"></label>
+
+  <label>Brief summary of issue and key dates<br>
+    <textarea rows="3"></textarea></label>
+</fieldset>
+
+<!-- 3 Questions for OH -->
+<fieldset>
+  <h2>3 │ Questions for Occupational Health</h2>
+  <p class="small">List the specific questions you would like Occupational Health to address (e.g., fitness for role, likely return date, adjustments, further assessments).</p>
+  <textarea rows="4"></textarea>
+</fieldset>
+
+<!-- 4 Job description / risk factors -->
+<fieldset>
+  <h2>4 │ Job Description / Risk Factors</h2>
+  <p class="small">Attach the formal job description if available, or summarise key tasks, physical or psychological demands, and workplace hazards.</p>
+  <textarea rows="4"></textarea>
+</fieldset>
+
+<!-- 5 Declarations -->
+<fieldset>
+  <h2>5 │ Declarations &amp; Consent</h2>
+  <p class="small">The employee should be informed of this referral and given a copy of the information provided.</p>
+  <label>Manager Signature ____________________________   Date ____ / ____ / 20__</label>
+  <br><br>
+  <label>Employee: I have been informed of this referral and consent to attend Occupational Health. <br>
+    Employee Signature ____________________________   Date ____ / ____ / 20__</label>
+</fieldset>
+
+</form>
+</body>
+</html>
