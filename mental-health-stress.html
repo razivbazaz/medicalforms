@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Mental Health & Work-Related Stress Assessment</title>
+<style>
+/* ---- shared clean UI ---- */
+*{box-sizing:border-box}
+body{margin:0;padding:40px 8px;font-family:"Segoe UI",Roboto,Arial,sans-serif;background:#f2f4f7;color:#222}
+h1{margin:0 0 20px;font-size:1.9rem;font-weight:600;text-align:center;color:#10375c}
+h2{margin:0 0 14px;padding-bottom:6px;font-size:1.15rem;color:#10375c;border-bottom:2px solid #d5e2f1}
+form{max-width:920px;margin:auto}
+fieldset{margin:24px 0;padding:24px;border:0;border-radius:8px;background:#fff;box-shadow:0 2px 8px rgba(16,55,92,.08)}
+label{display:block;margin-top:9px;font-weight:600}
+input[type=text],input[type=date],input[type=number],textarea,select{
+  width:100%;max-width:430px;padding:8px 10px;margin-top:4px;border:1px solid #cfd8e3;border-radius:6px;font:inherit
+}
+textarea{resize:vertical}
+input[type=checkbox],input[type=radio]{transform:scale(1.05);margin-right:6px}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:.94rem}
+th,td{border:1px solid #d9e0ea;padding:8px 10px;text-align:left}
+th{background:#eef4fb;font-weight:600}
+tr:nth-child(even) td{background:#fafbfc}
+.small{font-size:.85rem;color:#555}
+@media(max-width:600px){
+  body{padding:24px 4px}
+  input,textarea,select{max-width:100%}
+}
+</style>
+</head>
+<body>
+
+<h1>Mental Health &amp; Work-Related Stress Assessment</h1>
+
+<form>
+
+<!-- 1 -->
+<fieldset>
+  <h2>1 │ Personal &amp; Work Details</h2>
+  <label>Full Name <input type="text" required></label>
+  <label>Job Title / Team <input type="text"></label>
+  <label>Employer &amp; Site / Remote <input type="text"></label>
+  <label>Line Manager <input type="text"></label>
+  <label>Contact e-mail &amp; phone <input type="text"></label>
+  <label>Current work status
+    <select>
+      <option>Working full duties</option><option>Modified duties</option>
+      <option>Sick leave</option><option>Phased return</option>
+    </select></label>
+  <label>Date you last worked your full hours <input type="date"></label>
+</fieldset>
+
+<!-- 2 -->
+<fieldset>
+  <h2>2 │ Presenting Mental-Health Concerns</h2>
+  <table>
+    <tr><th>Item</th><th>Response</th></tr>
+    <tr><td>Main reason for assessment (e.g., low mood, anxiety)</td><td><input type="text"></td></tr>
+    <tr><td>Date symptoms first began / worsened</td><td><input type="text"></td></tr>
+    <tr><td>Formal diagnosis (DSM-5 / ICD-10)</td><td><input type="text"></td></tr>
+    <tr><td>Treating clinician(s) &amp; discipline</td><td><input type="text"></td></tr>
+    <tr><td>Current treatment (meds, CBT, counselling)</td><td><textarea rows="2"></textarea></td></tr>
+    <tr><td>Next mental-health review date</td><td><input type="date"></td></tr>
+  </table>
+</fieldset>
+
+<!-- 3 -->
+<fieldset>
+  <h2>3 │ Symptom Checklist (past 2 weeks)</h2>
+  <p class="small">Tick Yes if experienced on most days.</p>
+  <table>
+    <tr><th>Symptom</th><th>Yes</th><th>Symptom</th><th>Yes</th></tr>
+    <tr><td>Persistent sadness / low mood</td><td><input type="checkbox"></td><td>Poor concentration / indecision</td><td><input type="checkbox"></td></tr>
+    <tr><td>Loss of interest / motivation</td><td><input type="checkbox"></td><td>Excessive worry / rumination</td><td><input type="checkbox"></td></tr>
+    <tr><td>Fatigue / low energy</td><td><input type="checkbox"></td><td>Panic attacks</td><td><input type="checkbox"></td></tr>
+    <tr><td>Irritability / anger outbursts</td><td><input type="checkbox"></td><td>Flashbacks / intrusive memories</td><td><input type="checkbox"></td></tr>
+    <tr><td>Sleep disturbance</td><td><input type="checkbox"></td><td>Social withdrawal</td><td><input type="checkbox"></td></tr>
+    <tr><td>Appetite / weight change</td><td><input type="checkbox"></td><td>Thoughts of self-harm</td><td><input type="checkbox"></td></tr>
+  </table>
+  <label>If self-harm thoughts ticked, indicate any active intent / plan<br><textarea rows="2"></textarea></label>
+</fieldset>
+
+<!-- 4 -->
+<fieldset>
+  <h2>4 │ Work-Related Stress Factors (HSE 1-5)</h2>
+  <p class="small">1 = Low stress / Well managed → 5 = Severe stress.</p>
+  <table>
+    <tr><th>Domain</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr>
+    <tr><td>Demands (workload, hours)</td><td><input type="radio" name="dem" value="1"></td><td><input type="radio" name="dem" value="2"></td><td><input type="radio" name="dem" value="3"></td><td><input type="radio" name="dem" value="4"></td><td><input type="radio" name="dem" value="5"></td></tr>
+    <tr><td>Control (influence over work)</td><td><input type="radio" name="cont" value="1"></td><td><input type="radio" name="cont" value="2"></td><td><input type="radio" name="cont" value="3"></td><td><input type="radio" name="cont" value="4"></td><td><input type="radio" name="cont" value="5"></td></tr>
+    <tr><td>Support (resources, peers)</td><td><input type="radio" name="sup" value="1"></td><td><input type="radio" name="sup" value="2"></td><td><input type="radio" name="sup" value="3"></td><td><input type="radio" name="sup" value="4"></td><td><input type="radio" name="sup" value="5"></td></tr>
+    <tr><td>Relationships (conflict, bullying)</td><td><input type="radio" name="rel" value="1"></td><td><input type="radio" name="rel" value="2"></td><td><input type="radio" name="rel" value="3"></td><td><input type="radio" name="rel" value="4"></td><td><input type="radio" name="rel" value="5"></td></tr>
+    <tr><td>Role clarity</td><td><input type="radio" name="role" value="1"></td><td><input type="radio" name="role" value="2"></td><td><input type="radio" name="role" value="3"></td><td><input type="radio" name="role" value="4"></td><td><input type="radio" name="role" value="5"></td></tr>
+    <tr><td>Change management</td><td><input type="radio" name="chg" value="1"></td><td><input type="radio" name="chg" value="2"></td><td><input type="radio" name="chg" value="3"></td><td><input type="radio" name="chg" value="4"></td><td><input type="radio" name="chg" value="5"></td></tr>
+  </table>
+  <label>Explain any rating of 4 or 5<br><textarea rows="2"></textarea></label>
+</fieldset>
+
+<!-- 5 -->
+<fieldset>
+  <h2>5 │ Psychosocial &amp; Lifestyle Context</h2>
+  <table>
+    <tr><th>Question</th><th>Yes</th><th>No</th><th>Details</th></tr>
+    <tr><td>Significant personal stressors (bereavement, finance, caregiving)</td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="text"></td></tr>
+    <tr><td>Substance / alcohol use above safe limits</td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="text"></td></tr>
+    <tr><td>Adequate sleep (&gt;6 hrs, restorative)</td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="text"></td></tr>
+    <tr><td>Regular physical activity (&ge;150 min/week)</td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="text"></td></tr>
+    <tr><td>Support network available</td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="text"></td></tr>
+  </table>
+</fieldset>
+
+<!-- 6 -->
+<fieldset>
+  <h2>6 │ Impact on Function</h2>
+  <table>
+    <tr><th>Activity / Capacity</th><th>No impact</th><th>Mild</th><th>Moderate</th><th>Severe</th></tr>
+    <tr><td>Attendance / punctuality</td><td><input type="radio" name="att"></td><td><input type="radio" name="att"></td><td><input type="radio" name="att"></td><td><input type="radio" name="att"></td></tr>
+    <tr><td>Meeting deadlines / workload</td><td><input type="radio" name="dead"></td><td><input type="radio" name="dead"></td><td><input type="radio" name="dead"></td><td><input type="radio" name="dead"></td></tr>
+    <tr><td>Interacting with colleagues / clients</td><td><input type="radio" name="inter"></td><td><input type="radio" name="inter"></td><td><input type="radio" name="inter"></td><td><input type="radio" name="inter"></td></tr>
+    <tr><td>Decision-making &amp; concentration</td><td><input type="radio" name="dec"></td><td><input type="radio" name="dec"></td><td><input type="radio" name="dec"></td><td><input type="radio" name="dec"></td></tr>
+    <tr><td>Coping with change / pressure</td><td><input type="radio" name="cope"></td><td><input type="radio" name="cope"></td><td><input type="radio" name="cope"></td><td><input type="radio" name="cope"></td></tr>
+  </table>
+  <label>If Moderate or Severe, give examples<br><textarea rows="2"></textarea></label>
+</fieldset>
+
+<!-- 7 -->
+<fieldset>
+  <h2>7 │ Absence &amp; Treatment History</h2>
+  <label>Episodes of mental-health-related absence in past 12 months: <input type="number" style="width:90px"> (total days <input type="number" style="width:90px">)</label>
+  <label>Previous Occupational Health reviews?
+    <input type="checkbox"> Yes <input type="checkbox"> No – Date <input type="date"></label>
+  <label>Previous EAP / counselling sessions completed <input type="number" style="width:90px"></label>
+</fieldset>
+
+<!-- 8 -->
+<fieldset>
+  <h2>8 │ Self-Help &amp; Protective Factors</h2>
+  <label><input type="checkbox"> Mindfulness / relaxation exercises</label>
+  <label><input type="checkbox"> Structured daily routine</label>
+  <label><input type="checkbox"> Scheduled physical exercise</label>
+  <label><input type="checkbox"> Social engagement</label>
+  <label><input type="checkbox"> Professional therapy homework</label>
+</fieldset>
+
+<!-- 9 -->
+<fieldset>
+  <h2>9 │ Support &amp; Adjustments Requested</h2>
+  <label><input type="checkbox"> Phased hours</label>
+  <label><input type="checkbox"> Workload review</label>
+  <label><input type="checkbox"> Temporary remote work</label>
+  <label><input type="checkbox"> Quiet workspace / noise-reduction</label>
+  <label><input type="checkbox"> Regular manager check-ins</label>
+  <label><input type="checkbox"> EAP referral</label>
+  <label><input type="checkbox"> Mentoring / buddy</label>
+  <label><input type="checkbox"> Training on stress management</label>
+  <label>Other: <input type="text" style="max-width:300px"></label>
+</fieldset>
+
+<!-- 10 -->
+<fieldset>
+  <h2>10 │ Return-to-Work / Stay-at-Work Readiness</h2>
+  <p>Rate your readiness to work full duties (0 = strongly disagree, 10 = strongly agree):</p>
+  <input type="range" min="0" max="10" value="5" style="width:100%">
+  <label>Preferred return / review date <input type="date"></label>
+  <label>Barriers to returning / remaining in work<br><textarea rows="2"></textarea></label>
+</fieldset>
+
+<!-- 11 -->
+<fieldset>
+  <h2>11 │ Attachments Checklist</h2>
+  <table>
+    <tr><th>Document</th><th>Tick</th></tr>
+    <tr><td>Latest GP / psychiatrist / psychologist report</td><td><input type="checkbox"></td></tr>
+    <tr><td>Current fit note(s)</td><td><input type="checkbox"></td></tr>
+    <tr><td>Therapy summary or discharge letter</td><td><input type="checkbox"></td></tr>
+    <tr><td>Medication list</td><td><input type="checkbox"></td></tr>
+  </table>
+</fieldset>
+
+<!-- 12 -->
+<fieldset>
+  <h2>12 │ Declaration &amp; Consent</h2>
+  <p>I confirm the information above is accurate. I consent to Occupational Health reviewing this data and, with my explicit agreement, sharing relevant recommendations with my employer.</p>
+  <label>Signature ____________________________</label><br>
+  <label>Date ____ / ____ / 20__</label>
+</fieldset>
+
+</form>
+</body>
+</html>
