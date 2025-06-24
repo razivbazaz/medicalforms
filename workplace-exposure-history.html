@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Workplace Exposure History &amp; Risk Review – Incident Questionnaire</title>
+<style>
+/* ---- shared clean UI ---- */
+*{box-sizing:border-box}
+body{margin:0;padding:40px 8px;font-family:"Segoe UI",Roboto,Arial,sans-serif;background:#f2f4f7;color:#222}
+h1{margin:0 0 20px;font-size:1.9rem;font-weight:600;text-align:center;color:#10375c}
+h2{margin:0 0 14px;padding-bottom:6px;font-size:1.15rem;color:#10375c;border-bottom:2px solid #d5e2f1}
+form{max-width:920px;margin:auto}
+fieldset{margin:24px 0;padding:24px;border:0;border-radius:8px;background:#fff;box-shadow:0 2px 8px rgba(16,55,92,.08)}
+label{display:block;margin-top:9px;font-weight:600}
+input[type=text],input[type=date],input[type=time],textarea{
+  width:100%;max-width:430px;padding:8px 10px;margin-top:4px;border:1px solid #cfd8e3;border-radius:6px;font:inherit
+}
+textarea{resize:vertical}
+input[type=checkbox],input[type=radio]{transform:scale(1.05);margin-right:6px}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:.94rem}
+th,td{border:1px solid #d9e0ea;padding:8px 10px;text-align:left}
+th{background:#eef4fb;font-weight:600}
+tr:nth-child(even) td{background:#fafbfc}
+.small{font-size:.85rem;color:#555}
+@media(max-width:600px){
+  body{padding:24px 4px}
+  input,textarea{max-width:100%}
+}
+</style>
+</head>
+<body>
+
+<h1>Workplace Exposure History &amp; Risk Review – Incident Questionnaire</h1>
+
+<form>
+
+<!-- 1 Personal & job -->
+<fieldset>
+  <h2>1 │ Personal &amp; Job Information</h2>
+  <label>Employee Name <input type="text" required></label>
+  <label>Job Title / Department <input type="text"></label>
+  <label>Date of Incident <input type="date"></label>
+  <label>Time of Incident <input type="time"></label>
+  <label>Location of Incident <input type="text"></label>
+</fieldset>
+
+<!-- 2 Exposure details -->
+<fieldset>
+  <h2>2 │ Exposure Details</h2>
+  <label>Type of agent / exposure (chemical, noise, biological, radiation)<br>
+    <input type="text"></label>
+  <label>Description of task leading to exposure<br>
+    <textarea rows="2"></textarea></label>
+  <label>Estimated duration / intensity (if known)<br>
+    <input type="text"></label>
+  <label>PPE worn at time (list)<br>
+    <input type="text"></label>
+</fieldset>
+
+<!-- 3 Immediate effects -->
+<fieldset>
+  <h2>3 │ Immediate Effects &amp; First Aid</h2>
+  <label>Symptoms experienced (if any)<br>
+    <textarea rows="2"></textarea></label>
+  <label>First aid / medical treatment provided<br>
+    <textarea rows="2"></textarea></label>
+  <label>Names of witnesses / persons informed<br>
+    <textarea rows="2"></textarea></label>
+</fieldset>
+
+<!-- 4 Environmental readings -->
+<fieldset>
+  <h2>4 │ Environmental Readings (if available)</h2>
+  <textarea rows="3" placeholder="Air monitoring, noise levels, dosimeter readings, etc."></textarea>
+</fieldset>
+
+<!-- 5 Follow-up -->
+<fieldset>
+  <h2>5 │ Follow-Up Required</h2>
+  <label><input type="checkbox"> No further action</label>
+  <label><input type="checkbox"> Occupational Health review</label>
+  <label><input type="checkbox"> Workplace monitoring</label>
+  <label><input type="checkbox"> GP referral</label>
+  <label><input type="checkbox"> Other&nbsp;– specify <input type="text" style="max-width:260px"></label>
+</fieldset>
+
+<!-- 6 Declaration -->
+<fieldset>
+  <h2>6 │ Declaration</h2>
+  <p>I confirm that the information provided above is accurate and complete to the best of my knowledge.</p>
+  <label>Signature ____________________________</label><br>
+  <label>Date ____ / ____ / 20__</label>
+</fieldset>
+
+</form>
+</body>
+</html>
