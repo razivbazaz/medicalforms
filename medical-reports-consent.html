@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Consent to Obtain Medical Reports &amp; Specialist Liaison</title>
+<style>
+/* ---- shared clean UI ---- */
+*{box-sizing:border-box}
+body{margin:0;padding:40px 8px;font-family:"Segoe UI",Roboto,Arial,sans-serif;background:#f2f4f7;color:#222}
+h1{margin:0 0 20px;font-size:1.9rem;font-weight:600;text-align:center;color:#10375c}
+h2{margin:0 0 14px;padding-bottom:6px;font-size:1.15rem;color:#10375c;border-bottom:2px solid #d5e2f1}
+form{max-width:920px;margin:auto}
+fieldset{margin:24px 0;padding:24px;border:0;border-radius:8px;background:#fff;box-shadow:0 2px 8px rgba(16,55,92,.08)}
+label{display:block;margin-top:9px;font-weight:600}
+input[type=text],input[type=date],textarea{
+  width:100%;max-width:430px;padding:8px 10px;margin-top:4px;border:1px solid #cfd8e3;border-radius:6px;font:inherit
+}
+textarea{resize:vertical}
+input[type=checkbox]{transform:scale(1.05);margin-right:6px}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:.94rem}
+th,td{border:1px solid #d9e0ea;padding:8px 10px;text-align:left}
+th{background:#eef4fb;font-weight:600}
+tr:nth-child(even) td{background:#fafbfc}
+.small{font-size:.85rem;color:#555}
+@media(max-width:600px){
+  body{padding:24px 4px}
+  input,textarea{max-width:100%}
+}
+</style>
+</head>
+<body>
+
+<h1>Consent to Obtain Medical Reports &amp; Specialist Liaison</h1>
+<p class="small" style="text-align:center">
+  This form authorises Occupational Health to request and review medical information from your treating practitioners in accordance with the Access&nbsp;to&nbsp;Medical&nbsp;Reports&nbsp;Act&nbsp;/ GDPR.
+</p>
+
+<form>
+
+<!-- 1 Employee details -->
+<fieldset>
+  <h2>1 │ Employee Details</h2>
+  <label>Full Name <input type="text" required></label>
+  <label>Date of Birth <input type="date"></label>
+  <label>Job Title <input type="text"></label>
+  <label>Employer <input type="text"></label>
+  <label>Contact Phone / Email <input type="text"></label>
+</fieldset>
+
+<!-- 2 Practitioner details -->
+<fieldset>
+  <h2>2 │ Practitioner / Clinic Details</h2>
+  <label>Name &amp; Specialty of Doctor / Clinic <input type="text"></label>
+  <label>Address / Contact Number <textarea rows="2"></textarea></label>
+</fieldset>
+
+<!-- 3 Information requested -->
+<fieldset>
+  <h2>3 │ Information Requested</h2>
+  <table>
+    <tr><th>Document / Information</th><th>Tick to Authorise</th></tr>
+    <tr><td>Consultation notes</td><td><input type="checkbox"></td></tr>
+    <tr><td>Discharge summaries</td><td><input type="checkbox"></td></tr>
+    <tr><td>Investigation results (imaging, labs)</td><td><input type="checkbox"></td></tr>
+    <tr><td>Medication history</td><td><input type="checkbox"></td></tr>
+    <tr><td>Fitness-for-work opinion</td><td><input type="checkbox"></td></tr>
+  </table>
+</fieldset>
+
+<!-- 4 Purpose -->
+<fieldset>
+  <h2>4 │ Purpose of Request</h2>
+  <textarea rows="3" placeholder="e.g., To inform advice on fitness for work, adjustments, ill-health retirement assessment, etc."></textarea>
+</fieldset>
+
+<!-- 5 Consent -->
+<fieldset>
+  <h2>5 │ Employee Consent &amp; Rights</h2>
+  <p>I understand:</p>
+  <ul class="small">
+    <li>I may withhold consent or ask to see the report before it is released.</li>
+    <li>I can ask the doctor to amend any factual inaccuracies.</li>
+    <li>This consent is valid for 6 months and may be revoked in writing at any time.</li>
+  </ul>
+  <p>I hereby authorise Occupational Health to contact the practitioner named above and obtain the information ticked in Section&nbsp;3.</p>
+  <label>Signature ____________________________</label><br>
+  <label>Date ____ / ____ / 20__</label>
+</fieldset>
+
+</form>
+</body>
+</html>
