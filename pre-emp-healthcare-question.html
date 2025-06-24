@@ -83,42 +83,108 @@ tr:nth-child(even) td{background:#fafbfc}
 </table>
 </fieldset>
 
-<!-- 4 -->
+<!-- 4 │ Medical History (ever diagnosed) -->
 <fieldset>
-<h2>4 │ Medical History (ever diagnosed)</h2>
-<table>
-<tr><th>System &amp; Example Conditions</th><th>Yes</th><th>Details</th></tr>
-<tr><td>Respiratory – asthma, chronic cough, breathlessness, TB</td><td><input type="checkbox" name="resp"></td><td><input type="text" name="respDet"></td></tr>
-<tr><td>Cardiovascular – high BP, chest pain, irregular heartbeat</td><td><input type="checkbox" name="cardio"></td><td><input type="text" name="cardioDet"></td></tr>
-<tr><td>Neurological – seizures, migraines, stroke, numbness</td><td><input type="checkbox" name="neuro"></td><td><input type="text" name="neuroDet"></td></tr>
-<tr><td>Musculoskeletal – back pain, arthritis, repetitive strain injury</td><td><input type="checkbox" name="msk"></td><td><input type="text" name="mskDet"></td></tr>
-<tr><td>Skin – eczema, psoriasis, dermatitis</td><td><input type="checkbox" name="skin"></td><td><input type="text" name="skinDet"></td></tr>
-<tr><td>Endocrine – diabetes, thyroid disease</td><td><input type="checkbox" name="endo"></td><td><input type="text" name="endoDet"></td></tr>
-<tr><td>Gastrointestinal – ulcers, IBS, hepatitis</td><td><input type="checkbox" name="gi"></td><td><input type="text" name="giDet"></td></tr>
-<tr><td>Genitourinary – kidney stones, urinary problems</td><td><input type="checkbox" name="gu"></td><td><input type="text" name="guDet"></td></tr>
-<tr><td>Eyes/Ears – glaucoma, cataracts, hearing loss, tinnitus</td><td><input type="checkbox" name="eyes"></td><td><input type="text" name="eyesDet"></td></tr>
-<tr><td>Mental Health – depression, anxiety, eating disorders</td><td><input type="checkbox" name="mental"></td><td><input type="text" name="mentalDet"></td></tr>
-<tr><td>Blood / Immune – anaemia, bleeding disorders, HIV</td><td><input type="checkbox" name="blood"></td><td><input type="text" name="bloodDet"></td></tr>
-</table>
+  <h2>4 │ Medical History (ever diagnosed)</h2>
+  <table>
+    <tr><th>System &amp; Example Conditions</th><th>Yes</th><th>No</th><th>Details</th></tr>
+    <tr><td>Respiratory – asthma, chronic cough, breathlessness, TB</td>
+        <td><input type="radio" name="resp"  value="yes"></td>
+        <td><input type="radio" name="resp"  value="no"></td>
+        <td><input type="text"  name="respDet"></td></tr>
+    <tr><td>Cardiovascular – high BP, chest pain, irregular heartbeat</td>
+        <td><input type="radio" name="cardio" value="yes"></td>
+        <td><input type="radio" name="cardio" value="no"></td>
+        <td><input type="text"  name="cardioDet"></td></tr>
+    <tr><td>Neurological – seizures, migraines, stroke, numbness</td>
+        <td><input type="radio" name="neuro" value="yes"></td>
+        <td><input type="radio" name="neuro" value="no"></td>
+        <td><input type="text"  name="neuroDet"></td></tr>
+    <tr><td>Musculoskeletal – back pain, arthritis, repetitive strain injury</td>
+        <td><input type="radio" name="msk"   value="yes"></td>
+        <td><input type="radio" name="msk"   value="no"></td>
+        <td><input type="text"  name="mskDet"></td></tr>
+    <tr><td>Skin – eczema, psoriasis, dermatitis</td>
+        <td><input type="radio" name="skin"  value="yes"></td>
+        <td><input type="radio" name="skin"  value="no"></td>
+        <td><input type="text"  name="skinDet"></td></tr>
+    <tr><td>Endocrine – diabetes, thyroid disease</td>
+        <td><input type="radio" name="endo"  value="yes"></td>
+        <td><input type="radio" name="endo"  value="no"></td>
+        <td><input type="text"  name="endoDet"></td></tr>
+    <tr><td>Gastrointestinal – ulcers, IBS, hepatitis</td>
+        <td><input type="radio" name="gi"    value="yes"></td>
+        <td><input type="radio" name="gi"    value="no"></td>
+        <td><input type="text"  name="giDet"></td></tr>
+    <tr><td>Genitourinary – kidney stones, urinary problems</td>
+        <td><input type="radio" name="gu"    value="yes"></td>
+        <td><input type="radio" name="gu"    value="no"></td>
+        <td><input type="text"  name="guDet"></td></tr>
+    <tr><td>Eyes / Ears – glaucoma, cataracts, hearing loss, tinnitus</td>
+        <td><input type="radio" name="eyes"  value="yes"></td>
+        <td><input type="radio" name="eyes"  value="no"></td>
+        <td><input type="text"  name="eyesDet"></td></tr>
+    <tr><td>Mental Health – depression, anxiety, eating disorders</td>
+        <td><input type="radio" name="mental" value="yes"></td>
+        <td><input type="radio" name="mental" value="no"></td>
+        <td><input type="text"  name="mentalDet"></td></tr>
+    <tr><td>Blood / Immune – anaemia, bleeding disorders, HIV</td>
+        <td><input type="radio" name="blood" value="yes"></td>
+        <td><input type="radio" name="blood" value="no"></td>
+        <td><input type="text"  name="bloodDet"></td></tr>
+  </table>
 </fieldset>
 
-<!-- 5 -->
+<!-- 5 │ Current / Recent Symptoms (past 6 months) -->
 <fieldset>
-<h2>5 │ Current / Recent Symptoms (past 6 months)</h2>
-<table>
-<tr><th>Symptom</th><th>Yes</th><th>Symptom</th><th>Yes</th></tr>
-<tr><td>Chest pain / tightness</td><td><input type="checkbox" name="s1"></td><td>Tingling / numbness</td><td><input type="checkbox" name="s2"></td></tr>
-<tr><td>Shortness of breath on exertion</td><td><input type="checkbox" name="s3"></td><td>Visual difficulties</td><td><input type="checkbox" name="s4"></td></tr>
-<tr><td>Persistent cough</td><td><input type="checkbox" name="s5"></td><td>Hearing ringing (tinnitus)</td><td><input type="checkbox" name="s6"></td></tr>
-<tr><td>Frequent headaches</td><td><input type="checkbox" name="s7"></td><td>Skin rashes</td><td><input type="checkbox" name="s8"></td></tr>
-<tr><td>Dizzy spells / balance issues</td><td><input type="checkbox" name="s9"></td><td>Allergies causing breathing issues</td><td><input type="checkbox" name="s10"></td></tr>
-<tr><td>Back or neck pain</td><td><input type="checkbox" name="s11"></td><td>Epileptic seizure</td><td><input type="checkbox" name="s12"></td></tr>
-<tr><td>Joint stiffness or swelling</td><td><input type="checkbox" name="s13"></td><td>Palpitations</td><td><input type="checkbox" name="s14"></td></tr>
-<tr><td>Abdominal pain / heartburn</td><td><input type="checkbox" name="s15"></td><td>Frequent infections</td><td><input type="checkbox" name="s16"></td></tr>
-<tr><td>Unexplained weight loss</td><td><input type="checkbox" name="s17"></td><td>Fatigue impacting daily life</td><td><input type="checkbox" name="s18"></td></tr>
-<tr><td>Low mood or excessive worry</td><td><input type="checkbox" name="s19"></td><td>Episodes of loss of consciousness</td><td><input type="checkbox" name="s20"></td></tr>
-<tr><td>Sleep disturbance</td><td><input type="checkbox" name="s21"></td><td>High blood pressure readings</td><td><input type="checkbox" name="s22"></td></tr>
-</table>
+  <h2>5 │ Current / Recent Symptoms (past 6 months)</h2>
+  <table>
+    <tr><th>Symptom</th><th>Yes</th><th>No</th><th>Symptom</th><th>Yes</th><th>No</th></tr>
+    <tr><td>Chest pain / tightness</td>
+        <td><input type="radio" name="s1"  value="yes"></td><td><input type="radio" name="s1"  value="no"></td>
+        <td>Tingling / numbness</td>
+        <td><input type="radio" name="s2"  value="yes"></td><td><input type="radio" name="s2"  value="no"></td></tr>
+    <tr><td>Shortness of breath on exertion</td>
+        <td><input type="radio" name="s3"  value="yes"></td><td><input type="radio" name="s3"  value="no"></td>
+        <td>Visual difficulties</td>
+        <td><input type="radio" name="s4"  value="yes"></td><td><input type="radio" name="s4"  value="no"></td></tr>
+    <tr><td>Persistent cough</td>
+        <td><input type="radio" name="s5"  value="yes"></td><td><input type="radio" name="s5"  value="no"></td>
+        <td>Hearing ringing (tinnitus)</td>
+        <td><input type="radio" name="s6"  value="yes"></td><td><input type="radio" name="s6"  value="no"></td></tr>
+    <tr><td>Frequent headaches</td>
+        <td><input type="radio" name="s7"  value="yes"></td><td><input type="radio" name="s7"  value="no"></td>
+        <td>Skin rashes</td>
+        <td><input type="radio" name="s8"  value="yes"></td><td><input type="radio" name="s8"  value="no"></td></tr>
+    <tr><td>Dizzy spells / balance issues</td>
+        <td><input type="radio" name="s9"  value="yes"></td><td><input type="radio" name="s9"  value="no"></td>
+        <td>Allergies causing breathing issues</td>
+        <td><input type="radio" name="s10" value="yes"></td><td><input type="radio" name="s10" value="no"></td></tr>
+    <tr><td>Back or neck pain</td>
+        <td><input type="radio" name="s11" value="yes"></td><td><input type="radio" name="s11" value="no"></td>
+        <td>Epileptic seizure</td>
+        <td><input type="radio" name="s12" value="yes"></td><td><input type="radio" name="s12" value="no"></td></tr>
+    <tr><td>Joint stiffness or swelling</td>
+        <td><input type="radio" name="s13" value="yes"></td><td><input type="radio" name="s13" value="no"></td>
+        <td>Palpitations</td>
+        <td><input type="radio" name="s14" value="yes"></td><td><input type="radio" name="s14" value="no"></td></tr>
+    <tr><td>Abdominal pain / heartburn</td>
+        <td><input type="radio" name="s15" value="yes"></td><td><input type="radio" name="s15" value="no"></td>
+        <td>Frequent infections</td>
+        <td><input type="radio" name="s16" value="yes"></td><td><input type="radio" name="s16" value="no"></td></tr>
+    <tr><td>Unexplained weight loss</td>
+        <td><input type="radio" name="s17" value="yes"></td><td><input type="radio" name="s17" value="no"></td>
+        <td>Fatigue impacting daily life</td>
+        <td><input type="radio" name="s18" value="yes"></td><td><input type="radio" name="s18" value="no"></td></tr>
+    <tr><td>Low mood or excessive worry</td>
+        <td><input type="radio" name="s19" value="yes"></td><td><input type="radio" name="s19" value="no"></td>
+        <td>Episodes of loss of consciousness</td>
+        <td><input type="radio" name="s20" value="yes"></td><td><input type="radio" name="s20" value="no"></td></tr>
+    <tr><td>Sleep disturbance</td>
+        <td><input type="radio" name="s21" value="yes"></td><td><input type="radio" name="s21" value="no"></td>
+        <td>High blood pressure readings</td>
+        <td><input type="radio" name="s22" value="yes"></td><td><input type="radio" name="s22" value="no"></td></tr>
+  </table>
 </fieldset>
 
 <!-- 6 -->
