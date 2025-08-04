@@ -69,12 +69,13 @@ tr:nth-child(even) td{background:#fafbfc}
   <h2>2 │ Condition &amp; Clinical History</h2>
   <table>
     <tr><th>Item</th><th>Details</th></tr>
-    <tr><td>Primary diagnosis (ICD-10 if known)</td><td><input type="text"></td></tr>
-    <tr><td>Date first diagnosed / injury occurred</td><td><input type="text"></td></tr>
+    <tr><td>Presenting complaint</td><td><input type="text"></td></tr>
+    <tr><td>Date of first symptom</td><td><input type="text"></td></tr>
     <tr><td>Current severity</td>
         <td><select><option>Mild</option><option>Moderate</option><option>Severe</option><option>Fluctuating</option></select></td></tr>
-    <tr><td>Secondary diagnoses / comorbidities</td><td><input type="text"></td></tr>
+    <tr><td>Other symptoms</td><td><input type="text"></td></tr>
     <tr><td>Treating GP &amp; Specialist(s)</td><td><input type="text"></td></tr>
+    <tr><td>Occupational history</td><td><textarea rows="2" placeholder="Previous jobs, exposures, etc."></textarea></td></tr>
     <tr><td>Current treatment plan</td><td><textarea rows="2"></textarea></td></tr>
     <tr><td>Investigations in last 12 months &amp; results</td><td><textarea rows="2"></textarea></td></tr>
     <tr><td>Allergies / adverse drug reactions</td><td><input type="text"></td></tr>
@@ -83,19 +84,22 @@ tr:nth-child(even) td{background:#fafbfc}
 
 <!-- 3 ----------------------------------------------------------------- -->
 <fieldset>
-  <h2>3 │ Recent Absence &amp; Work History</h2>
-  <label>Current episode – From <input type="date"> to <input type="date">
-    (days <input type="number" style="width:90px">)</label>
-
-  <label>Absences &gt;7 days in past 24 months (date &amp; cause)
-    <textarea rows="2"></textarea></label>
-
-  <label>Longest continuous absence for this condition (days)
-    <input type="number" style="width:120px"></label>
-
-  <label>Submitted fit notes for every absence?
-    <input type="radio" name="fitnotes" value="yes"> Yes
-    <input type="radio" name="fitnotes" value="no"> No
+  <h2>3 │ Employment Details</h2>
+  
+  <label>How long have you been with the current employer?
+    <input type="text" placeholder="e.g., 3 years, 6 months">
+  </label>
+  
+  <label>Employment Type
+    <select>
+      <option value="">-- select --</option>
+      <option>Full-time</option>
+      <option>Part-time</option>
+    </select>
+  </label>
+  
+  <label>Brief description of your job tasks:
+    <textarea rows="3" placeholder="Describe your main responsibilities and daily activities"></textarea>
   </label>
 </fieldset>
 
