@@ -22,6 +22,7 @@ th,td{border:1px solid #d9e0ea;padding:8px 10px;text-align:left}
 th{background:#eef4fb;font-weight:600}
 tr:nth-child(even) td{background:#fafbfc}
 .small{font-size:.85rem;color:#555}
+.document-note {font-size:0.85rem; color:#666; font-style:italic; margin-top:4px;}
 @media(max-width:600px){
   body{padding:24px 4px}
   input,textarea,select{max-width:100%}
@@ -133,18 +134,31 @@ tr:nth-child(even) td{background:#fafbfc}
     <select><option>Permanent incapacity (any employment)</option><option>Partial incapacity (current role only)</option></select></label>
 </fieldset>
 
-<!-- 8 Evidence checklist -->
+<!-- 8 Evidence checklist - UPDATED BASED ON FEEDBACK -->
 <fieldset>
   <h2>8 │ Supporting Evidence Checklist</h2>
   <table>
     <tr><th>Document</th><th>Tick</th></tr>
-    <tr><td>Latest consultant / hospital letter</td><td><input type="checkbox"></td></tr>
+    <tr>
+      <td>
+        Latest consultant / hospital letter
+        <div class="document-note">(must confirm the nature of the diagnosis and if further intervention could improve your medical condition, either surgical or non-surgical)</div>
+      </td>
+      <td><input type="checkbox"></td>
+    </tr>
     <tr><td>GP summary print-out</td><td><input type="checkbox"></td></tr>
     <tr><td>Imaging / laboratory results</td><td><input type="checkbox"></td></tr>
     <tr><td>Physiotherapy / OT reports</td><td><input type="checkbox"></td></tr>
     <tr><td>Previous OH assessments</td><td><input type="checkbox"></td></tr>
     <tr><td>Fit notes covering last 12 months</td><td><input type="checkbox"></td></tr>
     <tr><td>Vocational rehab / adjustment reports</td><td><input type="checkbox"></td></tr>
+    <tr>
+      <td>
+        Letter from employer confirming inability to provide alternative role
+        <div class="document-note">(must confirm no suitable alternative roles available beyond your current job duties)</div>
+      </td>
+      <td><input type="checkbox"></td>
+    </tr>
   </table>
 </fieldset>
 
