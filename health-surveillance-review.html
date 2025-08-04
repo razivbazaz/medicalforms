@@ -44,7 +44,7 @@ tr:nth-child(even) td{background:#fafbfc}
   <label>Date of most recent surveillance test <input type="date"></label>
 </fieldset>
 
-<!-- 2 Programme -->
+<!-- 2 Programme - Updated with new surveillance types -->
 <fieldset>
   <h2>2 │ Surveillance Programme</h2>
   <table>
@@ -54,11 +54,22 @@ tr:nth-child(even) td{background:#fafbfc}
     <tr><td>Skin inspection</td><td><input type="date"></td><td><input type="checkbox"></td></tr>
     <tr><td>Vision testing</td><td><input type="date"></td><td><input type="checkbox"></td></tr>
     <tr><td>Hand-Arm Vibration (HAVS)</td><td><input type="date"></td><td><input type="checkbox"></td></tr>
+    
+    <!-- New surveillance types added based on feedback -->
+    <tr><td>Whole Body Vibration (WBV)</td><td><input type="date"></td><td><input type="checkbox"></td></tr>
+    <tr><td>Forklift operation</td><td><input type="date"></td><td><input type="checkbox"></td></tr>
+    <tr><td>Confined space work</td><td><input type="date"></td><td><input type="checkbox"></td></tr>
+    <tr><td>Working at heights</td><td><input type="date"></td><td><input type="checkbox"></td></tr>
+    <tr><td>Emergency Response Team (ERT)</td><td><input type="date"></td><td><input type="checkbox"></td></tr>
+    <tr><td>Respirator use</td><td><input type="date"></td><td><input type="checkbox"></td></tr>
+    <tr><td>Wind turbine work</td><td><input type="date"></td><td><input type="checkbox"></td></tr>
+    <tr><td>Inspection</td><td><input type="date"></td><td><input type="checkbox"></td></tr>
+    
     <tr><td>Other (specify)</td><td><input type="date"></td><td><input type="checkbox"></td></tr>
   </table>
 </fieldset>
 
-<!-- 3 Symptoms -->
+<!-- 3 Symptoms - Updated with new symptoms -->
 <fieldset>
   <h2>3 │ Symptom Questionnaire (tick Yes/No)</h2>
   <table>
@@ -68,6 +79,12 @@ tr:nth-child(even) td{background:#fafbfc}
     <tr><td>Skin rash / dryness</td><td><input type="radio" name="skin" value="y"></td><td><input type="radio" name="skin" value="n"></td></tr>
     <tr><td>Tingling / numbness in fingers</td><td><input type="radio" name="hav" value="y"></td><td><input type="radio" name="hav" value="n"></td></tr>
     <tr><td>Eye strain / visual changes</td><td><input type="radio" name="eyes" value="y"></td><td><input type="radio" name="eyes" value="n"></td></tr>
+    
+    <!-- New symptoms added based on surveillance types -->
+    <tr><td>Back/joint pain (WBV related)</td><td><input type="radio" name="wbv" value="y"></td><td><input type="radio" name="wbv" value="n"></td></tr>
+    <tr><td>Respiratory issues with mask use</td><td><input type="radio" name="resp" value="y"></td><td><input type="radio" name="resp" value="n"></td></tr>
+    <tr><td>Dizziness or balance problems</td><td><input type="radio" name="diz" value="y"></td><td><input type="radio" name="diz" value="n"></td></tr>
+    <tr><td>Claustrophobia in confined spaces</td><td><input type="radio" name="claus" value="y"></td><td><input type="radio" name="claus" value="n"></td></tr>
   </table>
 </fieldset>
 
