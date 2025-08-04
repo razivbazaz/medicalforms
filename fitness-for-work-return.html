@@ -22,6 +22,8 @@ th,td{border:1px solid #d9e0ea;padding:8px 10px;text-align:left}
 th{background:#eef4fb;font-weight:600}
 tr:nth-child(even) td{background:#fafbfc}
 .small{font-size:.85rem;color:#555}
+.adjustment-item {margin-bottom:12px;}
+.adjustment-item label {font-weight:normal;}
 @media(max-width:600px){
   body{padding:24px 4px}
   input,textarea,select{max-width:100%}
@@ -88,7 +90,7 @@ tr:nth-child(even) td{background:#fafbfc}
   </table>
 </fieldset>
 
-<!-- 4 -->
+<!-- 4 - Updated based on feedback -->
 <fieldset>
   <h2>4 │ Workplace Needs &amp; Support</h2>
   <label>Feel able to return to full duties without restriction?
@@ -96,14 +98,39 @@ tr:nth-child(even) td{background:#fafbfc}
     <input type="radio" name="full" value="no"> No
   </label>
 
-  <label>If no, what support or adjustments would help? (tick where relevant)</label>
-  <label><input type="checkbox"> Reduced hours / phased return</label>
-  <label><input type="checkbox"> Light duties / modified tasks</label>
-  <label><input type="checkbox"> Adjustments to workstation</label>
-  <label><input type="checkbox"> Temporary redeployment</label>
-  <label><input type="checkbox"> Other – specify <input type="text" style="max-width:250px"></label>
+  <div style="margin-top:16px;padding-left:16px;border-left:2px solid #eef4fb">
+    <p style="margin-top:0"><strong>If no, what limitations/obstacles you believe prevent you from returning to work?</strong></p>
+    
+    <div class="adjustment-item">
+      <label>1. Working full hours</label>
+      <textarea rows="2" placeholder="Explain any limitations regarding working full hours"></textarea>
+    </div>
+    
+    <div class="adjustment-item">
+      <label>2. Physical Work, heavy manual handling tasks</label>
+      <textarea rows="2" placeholder="Explain limitations with physical work"></textarea>
+    </div>
+    
+    <div class="adjustment-item">
+      <label>3. Repetitive tasks</label>
+      <textarea rows="2" placeholder="Explain limitations with repetitive tasks"></textarea>
+    </div>
+    
+    <div class="adjustment-item">
+      <label>4. Driving to work</label>
+      <textarea rows="2" placeholder="Explain limitations with driving to work"></textarea>
+      <label style="margin-top:6px;font-weight:normal">
+        <input type="checkbox"> I can use public transportation if needed
+      </label>
+    </div>
+    
+    <div class="adjustment-item">
+      <label>5. Other work tasks</label>
+      <textarea rows="2" placeholder="Explain any other limitations"></textarea>
+    </div>
+  </div>
 
-  <label>Have you discussed return-to-work arrangements with your manager?
+  <label style="margin-top:16px">Have you discussed return-to-work arrangements with your manager?
     <input type="radio" name="discuss" value="yes"> Yes
     <input type="radio" name="discuss" value="no"> No
   </label>
