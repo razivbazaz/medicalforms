@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cheese Factory OPS – Inventory Module</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .badge{display:inline-flex;align-items:center;padding:.25rem .6rem;border-radius:9999px;font-size:.75rem;font-weight:600}
+    .b-ok{background:#dcfce7;color:#166534}       /* ok */
+    .b-warn{background:#fffbeb;color:#92400e;border:1px solid #fcd34d} /* low/near expiry */
+    .b-bad{background:#fee2e2;color:#991b1b}      /* expired/quarantined */
+    .modal{display:none;position:fixed;inset:0;background:rgba(15,23,42,.5)}
+    .modal.open{display:flex;align-items:center;justify-content:center}
+    .tab{display:none}
+    .tab.active{display:block}
+    .pill{padding:.35rem .8rem;border-radius:9999px;font-size:.75rem}
+    .kpi{background:white;border:1px solid #e2e8f0;border-radius:1rem;padding:1rem}
+    .tbl th{background:#f1f5f9;font-weight:600}
+    .tbl th,.tbl td{padding:.5rem .5rem;border-top:1px solid #e2e8f0}
+  </style>
+</head>
+<body class="bg-slate-50">
+  <!-- Topbar -->
+  <div class="sticky top-0 z-20 bg-white/80 backdrop-blur border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-xl bg-slate-900 text-white grid place-items-center font-bold">KN</div>
+        <div>
+          <div class="text-sm text-slate-500">Cheese Factory OPS</div>
+          <div class="text-base font-semibold">Inventory</div>
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <button class="rounded-2xl border px-3 py-2 text-sm" onclick="alert('Global search (demo)')">Search</button>
+        <button class="rounded-2xl bg-slate-900 text-white px-3 py-2 text-sm" onclick="openTxn('receipt')">New Receipt</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main -->
+  <div class="max-w-7xl mx-auto px-4 py-6">
+    <!-- Tabs header -->
+    <div class="inline-flex bg-white rounded-2xl p-1 border">
+      <button id="tabBtn-overview" class="px-4 py-2 rounded-xl text-sm font-medium bg-slate-900 text-white" onclick="setTab('overview')">Overview</button>
+      <button id="tabBtn-items" class="px-4 py-2 rounded-xl text-sm font-medium" onclick="setTab('items')">Items</button>
+      <button id="tabBtn-lots" class="px-4 py-2 rounded-xl text-sm font-medium" onclick="setTab('lots')">Lots</button>
+      <button id="tabBtn-txns" class="px-4 py-2 rounded-xl text-sm font-medium" onclick="setTab('txns')">Transactions</button>
+      <button id="tabBtn-reports" class="px-4 py-2 rounded-xl text-sm font-medium" onclick="setTab('reports')">Reports</button>
+    </div>
+
+    <!-- Overview -->
+    <section id="tab-overview" class="tab active mt-6">
+      <div class="grid md:grid-cols-4 gap-4">
+        <div class="kpi">
+          <div class="text-xs text-slate-500">Total On-hand</div>
+          <div class="text-2xl font-semibold" id="kpiOnHand">—</div>
+        </div>
+        <div class="kpi">
+          <div class="text-xs text-slate-500">Quarantined</div>
+          <div class="text-2xl font-semibold" id="kpiQ">—</div>
+        </div>
+        <div class="kpi">
+          <div class="text-xs text-slate-500">Near Expiry (30d)</div>
+          <div class="text-2xl font-semibold" id="kpiNear">—</div>
+        </div>
+        <div class="kpi">
+          <div class="text-xs text-slate-500">Wastage (30d)</div>
+          <div class="text-2xl font-semibold" id="kpiWaste">—</div>
+        </div>
+      </div>
+
+      <div class="mt-6 bg-white rounded-2xl border p-4">
+        <div class="flex items-center justify-between">
+          <div class="text-base font-semibold">Low Stock & FEFO Alerts</div>
+          <div class="text-sm text-slate-500">Auto-sorted by risk</div>
+        </div>
+        <div id="alerts" class="mt-3 space-y-2"></div>
+      </div>
+    </section>
+
+    <!-- Items -->
+    <section id="tab-items" class="tab mt-6">
+      <div class="bg-white rounded-2xl border p-4">
+        <div class="flex flex-wrap gap-3 mb-3">
+          <input id="itemSearch" class="rounded-xl border px-3 py-2 text-sm" placeholder="Search items (name/category)"/>
+          <select id="itemCat" class="rounded-xl border px-3 py-2 text-sm">
+            <option value="">All Categories</option>
+            <option>Additives</option>
+            <option>Packaging</option>
+            <option>Cheddar – Blocked</option>
+            <option>Cheddar – Offcuts</option>
+          </select>
+          <button class="rounded-2xl border px-3 py-2 text-sm" onclick="alert('Add Item (demo)')">Add Item</button>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="min-w-full text-sm tbl">
+            <thead><tr>
+              <th class="text-left">Item</th>
+              <th class="text-left">Category</th>
+              <th class="text-left">UoM</th>
+              <th class="text-left">On-hand</th>
+              <th class="text-left">Reserved</th>
+              <th class="text-left">Quarantined</th>
+              <th class="text-left">Last 30d: Used</th>
+              <th class="text-left">Last 30d: Waste</th>
+              <th class="text-right">Actions</th>
+            </tr></thead>
+            <tbody id="itemsBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lots -->
+    <section id="tab-lots" class="tab mt-6">
+      <div class="bg-white rounded-2xl border p-4">
+        <div class="grid md:grid-cols-5 gap-3 mb-3">
+          <input id="lotSearch" class="rounded-xl border px-3 py-2 text-sm md:col-span-2" placeholder="Search by batch/lot/BBD"/>
+          <input id="lotDateFrom" type="date" class="rounded-xl border px-3 py-2 text-sm" />
+          <input id="lotDateTo" type="date" class="rounded-xl border px-3 py-2 text-sm" />
+          <select id="lotStatus" class="rounded-xl border px-3 py-2 text-sm">
+            <option>All Status</option>
+            <option>Open</option>
+            <option>Quarantined</option>
+            <option>Released</option>
+            <option>Expired</option>
+          </select>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="min-w-full text-sm tbl">
+            <thead><tr>
+              <th class="text-left">Item</th>
+              <th class="text-left">Batch</th>
+              <th class="text-left">BBD</th>
+              <th class="text-left">Location</th>
+              <th class="text-left">Qty</th>
+              <th class="text-left">Status</th>
+              <th class="text-right">Actions</th>
+            </tr></thead>
+            <tbody id="lotsBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Transactions -->
+    <section id="tab-txns" class="tab mt-6">
+      <div class="bg-white rounded-2xl border p-4">
+        <div class="flex flex-wrap gap-2 mb-3">
+          <select id="txnType" class="rounded-xl border px-3 py-2 text-sm">
+            <option value="">All Types</option>
+            <option>Receipt</option>
+            <option>Issue to Production</option>
+            <option>Return from Production</option>
+            <option>Transfer</option>
+            <option>Adjustment (+/−)</option>
+            <option>Waste</option>
+          </select>
+          <input id="txnFree" class="rounded-xl border px-3 py-2 text-sm" placeholder="Search (item/lot/ref)"/>
+          <input id="txnFrom" type="date" class="rounded-xl border px-3 py-2 text-sm"/>
+          <input id="txnTo" type="date" class="rounded-xl border px-3 py-2 text-sm"/>
+          <button class="rounded-2xl border px-3 py-2 text-sm" onclick="openTxn()">New Transaction</button>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="min-w-full text-sm tbl">
+            <thead><tr>
+              <th class="text-left">Date/Time</th>
+              <th class="text-left">Type</th>
+              <th class="text-left">Item</th>
+              <th class="text-left">Lot</th>
+              <th class="text-left">Qty</th>
+              <th class="text-left">UoM</th>
+              <th class="text-left">Reference</th>
+              <th class="text-left">User</th>
+            </tr></thead>
+            <tbody id="txnsBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reports -->
+    <section id="tab-reports" class="tab mt-6">
+      <div class="grid gap-6">
+        <div class="bg-white rounded-2xl border p-4">
+          <div class="text-base font-semibold mb-3">Item Ledger (selected item)</div>
+          <div class="flex flex-wrap gap-2 mb-3">
+            <select id="repItem" class="rounded-xl border px-3 py-2 text-sm"></select>
+            <input id="repFrom" type="date" class="rounded-xl border px-3 py-2 text-sm"/>
+            <input id="repTo" type="date" class="rounded-xl border px-3 py-2 text-sm"/>
+            <button class="rounded-2xl border px-3 py-2 text-sm" onclick="renderItemLedger()">Run</button>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="min-w-full text-sm tbl">
+              <thead><tr>
+                <th class="text-left">Date</th>
+                <th class="text-left">Txn Type</th>
+                <th class="text-left">Lot</th>
+                <th class="text-left">In</th>
+                <th class="text-left">Out</th>
+                <th class="text-left">Balance</th>
+                <th class="text-left">Reference</th>
+              </tr></thead>
+              <tbody id="itemLedgerBody"><tr><td colspan="7" class="p-4 text-center text-slate-500">Choose an item and date range</td></tr></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl border p-4">
+          <div class="text-base font-semibold mb-3">Usage vs Waste (last 90 days)</div>
+          <div id="usageWaste" class="grid md:grid-cols-3 gap-3"></div>
+        </div>
+
+        <div class="bg-white rounded-2xl border p-4">
+          <div class="text-base font-semibold mb-3">Lot Trace (1-up / 1-down demo)</div>
+          <div class="flex flex-wrap gap-2 mb-3">
+            <input id="traceLot" class="rounded-xl border px-3 py-2 text-sm" placeholder="Enter lot/batch code"/>
+            <button class="rounded-2xl border px-3 py-2 text-sm" onclick="runTrace()">Run Trace</button>
+          </div>
+          <div id="traceOut" class="text-sm text-slate-700"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- New Transaction Modal (demo) -->
+  <div id="txnModal" class="modal">
+    <div class="bg-white rounded-2xl shadow-xl border max-w-2xl w-full p-4 mx-4">
+      <div class="flex items-center justify-between border-b pb-2">
+        <div class="text-base font-semibold" id="txnTitle">New Transaction</div>
+        <button class="text-slate-500" onclick="toggleModal(false)">✕</button>
+      </div>
+      <div class="py-3 grid md:grid-cols-2 gap-3 text-sm">
+        <div>
+          <label class="block text-slate-600 text-xs mb-1">Type</label>
+          <select id="txnTypeNew" class="rounded-xl border px-3 py-2 w-full">
+            <option>Receipt</option>
+            <option>Issue to Production</option>
+            <option>Return from Production</option>
+            <option>Transfer</option>
+            <option>Adjustment (+/−)</option>
+            <option>Waste</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-slate-600 text-xs mb-1">Item</label>
+          <select id="txnItemNew" class="rounded-xl border px-3 py-2 w-full"></select>
+        </div>
+        <div>
+          <label class="block text-slate-600 text-xs mb-1">Lot</label>
+          <select id="txnLotNew" class="rounded-xl border px-3 py-2 w-full"></select>
+        </div>
+        <div>
+          <label class="block text-slate-600 text-xs mb-1">Qty</label>
+          <input id="txnQtyNew" class="rounded-xl border px-3 py-2 w-full" placeholder="e.g. 25"/>
+        </div>
+        <div>
+          <label class="block text-slate-600 text-xs mb-1">Reference</label>
+          <input id="txnRefNew" class="rounded-xl border px-3 py-2 w-full" placeholder="e.g. PROD-00045"/>
+        </div>
+        <div class="md:col-span-2">
+          <label class="block text-slate-600 text-xs mb-1">Comment</label>
+          <textarea id="txnComNew" class="rounded-xl border px-3 py-2 w-full" rows="2"></textarea>
+        </div>
+      </div>
+      <div class="pt-2 text-right">
+        <button class="rounded-2xl border px-3 py-2 text-sm" onclick="toggleModal(false)">Cancel</button>
+        <button class="rounded-2xl bg-slate-900 text-white px-3 py-2 text-sm" onclick="saveTxn()">Save (demo)</button>
+      </div>
+    </div>
+  </div>
+
+<script>
+  // --- Demo dataset ---
+  const items = [
+    {id:'garlic', name:'Garlic (Additive)', cat:'Additives', uom:'g'},
+    {id:'cheddar_block', name:'Cheddar – Blocked', cat:'Cheddar – Blocked', uom:'kg'},
+    {id:'offcuts', name:'Cheddar – Offcuts', cat:'Cheddar – Offcuts', uom:'kg'},
+    {id:'vac_bag', name:'Vacuum Bags 150×200', cat:'Packaging', uom:'units'},
+    {id:'chives', name:'Chives (Additive)', cat:'Additives', uom:'g'},
+  ];
+
+  // lots: qty, bbd ISO, status, location
+  let lots = [
+    {id:'L-23233001', item:'garlic', batch:'23233001', bbd:'2025-12-15', qty: 18000, status:'Open', location:'High-care'},
+    {id:'L-23338002', item:'garlic', batch:'23338002', bbd:'2025-10-01', qty:  1200, status:'Open', location:'High-care'},
+    {id:'L-BLK-7421', item:'cheddar_block', batch:'BLK7421', bbd:'2026-03-01', qty:  980, status:'Released', location:'Maturing'},
+    {id:'L-OFC-774',  item:'offcuts', batch:'OFC774', bbd:'2025-11-20', qty:   62, status:'Open', location:'High-care'},
+    {id:'L-VB-100',   item:'vac_bag', batch:'VB100', bbd:'2028-01-01', qty:  5000, status:'Open', location:'Packaging'},
+    {id:'L-G-QUAR',   item:'garlic', batch:'G-QUAR', bbd:'2025-09-20', qty:   50, status:'Quarantined', location:'Quarantine'},
+  ];
+
+  // transactions (most recent first for demo)
+  let txns = [
+    {t:'2025-09-07T13:25', type:'Issue to Production', item:'garlic', lot:'23233001', qty:-400, uom:'g', ref:'BLEND-012', user:'maria'},
+    {t:'2025-09-07T13:20', type:'Issue to Production', item:'chives', lot:'—', qty:-50, uom:'g', ref:'BLEND-012', user:'maria'},
+    {t:'2025-09-05T09:15', type:'Waste', item:'offcuts', lot:'OFC774', qty:-3, uom:'kg', ref:'WASTE-CASE', user:'john'},
+    {t:'2025-09-04T17:10', type:'Return from Production', item:'garlic', lot:'23233001', qty:+20, uom:'g', ref:'BLEND-011', user:'maria'},
+    {t:'2025-09-02T10:05', type:'Receipt', item:'garlic', lot:'23338002', qty:+1200, uom:'g', ref:'INV-881', user:'liam'},
+    {t:'2025-08-29T08:40', type:'Transfer', item:'cheddar_block', lot:'BLK7421', qty:0, uom:'kg', ref:'to Maturing', user:'noah'},
+    {t:'2025-08-28T12:44', type:'Adjustment (+/−)', item:'vac_bag', lot:'VB100', qty:+100, uom:'units', ref:'Count adj', user:'sofia'},
+  ];
+
+  // --- Helpers ---
+  const byId = (id)=>document.getElementById(id);
+  const fmt = (n)=> (typeof n==='number' ? (Math.round(n*100)/100).toLocaleString() : n);
+
+  function setTab(t){
+    ['overview','items','lots','txns','reports'].forEach(id=>{
+      byId('tab-'+id).classList.toggle('active', id===t);
+      const btn = byId('tabBtn-'+id);
+      if(!btn) return;
+      btn.classList.toggle('bg-slate-900', id===t);
+      btn.classList.toggle('text-white', id===t);
+      if(id!==t){ btn.classList.remove('bg-slate-900','text-white'); }
+    });
+    if(t==='items') renderItems();
+    if(t==='lots') renderLots();
+    if(t==='txns') renderTxns();
+    if(t==='reports') { populateReportItems(); renderUsageWaste(); }
+    renderOverview();
+  }
+
+  function dayDiff(a,b){return Math.ceil((new Date(a)-new Date(b))/(1000*60*60*24));}
+
+  function lotBadge(l){
+    const days = dayDiff(l.bbd, new Date());
+    if(l.status==='Quarantined') return '<span class="badge b-bad">Quarantined</span>';
+    if(days < 0) return '<span class="badge b-bad">Expired</span>';
+    if(days <= 30) return '<span class="badge b-warn">Near Expiry</span>';
+    return '<span class="badge b-ok">OK</span>';
+  }
+
+  // --- Overview ---
+  function renderOverview(){
+    // KPIs
+    const onHand = lots.reduce((s,l)=> s + (l.qty>0?l.qty:0), 0);
+    const quarantined = lots.filter(l=>l.status==='Quarantined').reduce((s,l)=>s+l.qty,0);
+    const near = lots.filter(l=>dayDiff(l.bbd, new Date())<=30 && dayDiff(l.bbd, new Date())>=0).length;
+    const waste30 = txns.filter(x=>x.type==='Waste' && dayDiff(new Date(), x.t)<=30).reduce((s,x)=>s+Math.abs(x.qty),0);
+    byId('kpiOnHand').innerText = fmt(onHand);
+    byId('kpiQ').innerText = fmt(quarantined);
+    byId('kpiNear').innerText = fmt(near);
+    byId('kpiWaste').innerText = fmt(waste30);
+
+    // Alerts (sort by risk)
+    const alertLots = [...lots].sort((a,b)=>{
+      const aw = a.status==='Quarantined'?0:dayDiff(a.bbd, new Date());
+      const bw = b.status==='Quarantined'?0:dayDiff(b.bbd, new Date());
+      return aw - bw;
+    }).slice(0,6);
+
+    byId('alerts').innerHTML = alertLots.map(l=>{
+      const item = items.find(i=>i.id===l.item)?.name || l.item;
+      const days = dayDiff(l.bbd, new Date());
+      const tag = lotBadge(l);
+      const info = l.status==='Quarantined' ? '— quarantine review required' :
+                   (days<0 ? `— expired ${Math.abs(days)}d ago` :
+                   (days<=30 ? `— ${days}d to expiry` : ''));
+      return `<div class="flex items-center justify-between border rounded-xl px-3 py-2">
+        <div class="text-sm">
+          <span class="font-medium">${item}</span> • Lot <span class="font-mono">${l.batch}</span> • Qty ${fmt(l.qty)} • BBD ${l.bbd} ${info}
+        </div>
+        <div>${tag}</div>
+      </div>`;
+    }).join('');
+  }
+
+  // --- Items ---
+  function calcItemAgg(){
+    const agg = {};
+    items.forEach(i=>{
+      agg[i.id] = {on:0,res:0,qua:0,used30:0,waste30:0,uom:i.uom, name:i.name, cat:i.cat};
+    });
+    lots.forEach(l=>{
+      const a = agg[l.item];
+      if(!a) return;
+      if(l.qty>0) a.on += l.qty;
+      if(l.status==='Quarantined') a.qua += l.qty;
+    });
+    txns.forEach(x=>{
+      const a = agg[x.item] || (agg[x.item]={on:0,res:0,qua:0,used30:0,waste30:0,uom:x.uom, name:x.item, cat:'—'});
+      if(x.type==='Issue to Production' && dayDiff(new Date(), x.t)<=30) a.used30 += Math.abs(x.qty);
+      if(x.type==='Waste' && dayDiff(new Date(), x.t)<=30) a.waste30 += Math.abs(x.qty);
+    });
+    return agg;
+  }
+  function renderItems(){
+    const q = byId('itemSearch').value?.toLowerCase() || '';
+    const cat = byId('itemCat').value;
+    const agg = calcItemAgg();
+    const rows = Object.entries(agg).filter(([id,a])=>{
+      const name = a.name.toLowerCase();
+      const okQ = !q || name.includes(q) || a.cat.toLowerCase().includes(q);
+      const okC = !cat || a.cat===cat;
+      return okQ && okC;
+    }).map(([id,a])=>{
+      return `<tr>
+        <td>${a.name}</td>
+        <td>${a.cat}</td>
+        <td>${a.uom}</td>
+        <td>${fmt(a.on)}</td>
+        <td>0</td>
+        <td>${fmt(a.qua)}</td>
+        <td>${fmt(a.used30)}</td>
+        <td>${fmt(a.waste30)}</td>
+        <td class="text-right">
+          <button class="rounded-xl border px-2 py-1 text-xs" onclick="openItem('${id}')">View</button>
+        </td>
+      </tr>`;
+    }).join('');
+    byId('itemsBody').innerHTML = rows || `<tr><td colspan="9" class="p-4 text-center text-slate-500">No items found</td></tr>`;
+  }
+  function openItem(id){
+    setTab('lots');
+    byId('lotSearch').value = items.find(i=>i.id===id)?.name || '';
+    renderLots();
+  }
+  byId('itemSearch').addEventListener('input', renderItems);
+  byId('itemCat').addEventListener('change', renderItems);
+
+  // --- Lots ---
+  function renderLots(){
+    const txt = (byId('lotSearch').value||'').toLowerCase();
+    const from = byId('lotDateFrom').value ? new Date(byId('lotDateFrom').value) : null;
+    const to = byId('lotDateTo').value ? new Date(byId('lotDateTo').value) : null;
+    const status = byId('lotStatus').value;
+
+    const rows = lots.filter(l=>{
+      const itemName = items.find(i=>i.id===l.item)?.name || l.item;
+      const okTxt = !txt || [itemName,l.batch,l.bbd].join(' ').toLowerCase().includes(txt);
+      const okSt = status==='All Status' || !status || l.status===status || (status==='Expired' && dayDiff(l.bbd,new Date())<0);
+      const dateOk = (!from || new Date(l.bbd)>=from) && (!to || new Date(l.bbd)<=to);
+      return okTxt && okSt && dateOk;
+    }).map(l=>{
+      const item = items.find(i=>i.id===l.item)?.name || l.item;
+      return `<tr>
+        <td>${item}</td>
+        <td class="font-mono">${l.batch}</td>
+        <td>${l.bbd}</td>
+        <td>${l.location}</td>
+        <td>${fmt(l.qty)}</td>
+        <td>${lotBadge(l)}</td>
+        <td class="text-right">
+          <div class="inline-flex gap-1">
+            <button class="rounded-xl border px-2 py-1 text-xs" onclick="openTxn('issue','${l.id}')">Issue</button>
+            <button class="rounded-xl border px-2 py-1 text-xs" onclick="openTxn('transfer','${l.id}')">Transfer</button>
+            <button class="rounded-xl border px-2 py-1 text-xs" onclick="openTxn('adjust','${l.id}')">Adjust</button>
+            <button class="rounded-xl border px-2 py-1 text-xs" onclick="openTxn('waste','${l.id}')">Waste</button>
+          </div>
+        </td>
+      </tr>`;
+    }).join('');
+    byId('lotsBody').innerHTML = rows || `<tr><td colspan="7" class="p-4 text-center text-slate-500">No matching lots</td></tr>`;
+  }
+  ['lotSearch','lotDateFrom','lotDateTo','lotStatus'].forEach(id=>{
+    byId(id).addEventListener('input', renderLots);
+    byId(id).addEventListener('change', renderLots);
+  });
+
+  // --- Transactions list ---
+  function renderTxns(){
+    byId('txnsBody').innerHTML = txns.map(x=>{
+      const inOut = x.qty>0?`+${fmt(x.qty)}`:fmt(x.qty);
+      const item = items.find(i=>i.id===x.item)?.name || x.item;
+      return `<tr>
+        <td>${x.t.replace('T',' ')}</td>
+        <td>${x.type}</td>
+        <td>${item}</td>
+        <td>${x.lot}</td>
+        <td>${inOut}</td>
+        <td>${x.uom}</td>
+        <td>${x.ref||'—'}</td>
+        <td>${x.user}</td>
+      </tr>`;
+    }).join('');
+  }
+
+  // --- Reports ---
+  function populateReportItems(){
+    const s = byId('repItem');
+    s.innerHTML = items.map(i=>`<option value="${i.id}">${i.name}</option>`).join('');
+  }
+  function renderItemLedger(){
+    const itemId = byId('repItem').value;
+    const f = byId('repFrom').value ? new Date(byId('repFrom').value) : null;
+    const t = byId('repTo').value ? new Date(byId('repTo').value) : null;
+    let balance = 0;
+    const rows = txns
+      .filter(x=>x.item===itemId)
+      .filter(x=>!f || new Date(x.t)>=f)
+      .filter(x=>!t || new Date(x.t)<=t)
+      .sort((a,b)=> new Date(a.t)-new Date(b.t))
+      .map(x=>{
+        balance += x.qty;
+        return `<tr>
+          <td>${x.t.slice(0,10)}</td>
+          <td>${x.type}</td>
+          <td>${x.lot}</td>
+          <td>${x.qty>0?fmt(x.qty):''}</td>
+          <td>${x.qty<0?fmt(Math.abs(x.qty)):''}</td>
+          <td>${fmt(balance)}</td>
+          <td>${x.ref||'—'}</td>
+        </tr>`;
+      }).join('');
+    byId('itemLedgerBody').innerHTML = rows || `<tr><td colspan="7" class="p-4 text-center text-slate-500">No movements</td></tr>`;
+  }
+
+  function renderUsageWaste(){
+    const agg = {};
+    items.forEach(i=> agg[i.id] = {name:i.name, used:0, waste:0, uom:i.uom});
+    txns.forEach(x=>{
+      if(dayDiff(new Date(), x.t)<=90){
+        if(x.type==='Issue to Production') agg[x.item].used += Math.abs(x.qty);
+        if(x.type==='Waste') agg[x.item].waste += Math.abs(x.qty);
+      }
+    });
+    byId('usageWaste').innerHTML = Object.values(agg).map(a=>{
+      return `<div class="border rounded-2xl p-3">
+        <div class="font-medium">${a.name}</div>
+        <div class="text-sm text-slate-600 mt-1">Used: <span class="font-semibold">${fmt(a.used)}</span> ${a.uom}</div>
+        <div class="text-sm text-slate-600">Waste: <span class="font-semibold">${fmt(a.waste)}</span> ${a.uom}</div>
+      </div>`;
+    }).join('');
+  }
+
+  // --- New transaction modal ---
+  function openTxn(preset, lotId){
+    byId('txnTitle').innerText = 'New Transaction';
+    toggleModal(true);
+    // populate item & lot selects
+    byId('txnItemNew').innerHTML = items.map(i=>`<option value="${i.id}">${i.name}</option>`).join('');
+    byId('txnLotNew').innerHTML = lots.map(l=>`<option value="${l.id}">${l.batch} (${items.find(i=>i.id===l.item)?.name})</option>`).join('');
+    if(preset==='issue') byId('txnTypeNew').value = 'Issue to Production';
+    if(preset==='transfer') byId('txnTypeNew').value = 'Transfer';
+    if(preset==='adjust') byId('txnTypeNew').value = 'Adjustment (+/−)';
+    if(preset==='waste') byId('txnTypeNew').value = 'Waste';
+    if(lotId){
+      const lot = lots.find(l=>l.id===lotId);
+      if(lot){
+        byId('txnItemNew').value = lot.item;
+        byId('txnLotNew').value = lot.id;
+      }
+    }
+  }
+  function toggleModal(open){ byId('txnModal').classList.toggle('open', open); }
+  function saveTxn(){
+    const type = byId('txnTypeNew').value;
+    const item = byId('txnItemNew').value;
+    const lotId = byId('txnLotNew').value;
+    const qty = Number(byId('txnQtyNew').value || 0);
+    const ref = byId('txnRefNew').value;
+    const u = 'system';
+    if(!item || !lotId || !qty){ alert('Please choose item, lot, and qty'); return; }
+    const lot = lots.find(l=>l.id===lotId);
+    // basic ledger effect (demo only)
+    txns.unshift({t:new Date().toISOString().slice(0,16), type, item, lot:lot.batch, qty: (['Receipt','Return from Production','Adjustment (+/−)'].includes(type) && qty>0)? qty : -Math.abs(qty), uom: items.find(i=>i.id===item).uom, ref, user:u});
+    // adjust lot qty for demo
+    if(['Receipt','Return from Production','Adjustment (+/−)'].includes(type)){ lot.qty += Math.abs(qty); }
+    if(['Issue to Production','Waste'].includes(type)){ lot.qty -= Math.abs(qty); if(lot.qty<0) lot.qty=0; }
+    toggleModal(false);
+    renderTxns(); renderLots(); renderItems(); renderOverview();
+    alert('Saved (demo).');
+  }
+
+  // init
+  setTab('overview');
+</script>
+</body>
+</html>
